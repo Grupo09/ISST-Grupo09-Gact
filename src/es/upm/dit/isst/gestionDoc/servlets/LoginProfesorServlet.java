@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.dit.isst.gestionDoc.dao.AsignacionDAOImplementation;
+
 /**
  * Servlet implementation class LoginProfesorServlet
  */
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginProfesorServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		req.getSession().setAttribute("menuProfesor", 0);
 		resp.sendRedirect(req.getContextPath() + "/LoginProfesor.jsp");
 	}

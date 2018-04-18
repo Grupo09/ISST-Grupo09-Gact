@@ -27,53 +27,49 @@
 			<li class="nav-item active"><a class="nav-link" href="#">PROFESOR</a></li>
 			<c:if
 				test="${ profesor.email.equals(profesor.departamento.responsable.email)}">
-				<li class="nav-item"><a class="nav-link" href="LoginResponsableServlet">RESPONSABLE</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="LoginResponsableServlet">RESPONSABLE</a></li>
 			</c:if>
 			<c:if test="${ fn:length(asignaturaCoordinador_list)> 0}">
-				<li class="nav-item"><a class="nav-link" href="LoginCoordinadorServlet">COORDINADOR</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="LoginCoordinadorServlet">COORDINADOR</a></li>
 			</c:if>
 		</ul>
 	</div>
 	<img src="./imgs/fondo.jpg" style="width: 100%; height: 200px;">
 	<div class="container">
 		<div class="row affix-row">
-			<div class="col-sm-3 col-md-2" style="padding-left:0px;">
+			<div class="col-sm-3 col-md-2" style="padding-left: 0px;">
 				<div class="affix-sidebar sidebar-nav navbar navbar-default"
 					role="navigation">
 					<ul class="nav  navbar-nav nav-lateralMenu">
 						<li class><a href="#">Perfil</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Asignaturas impartidas<span
-								class="caret"></span></a>
-							<ul class="dropdown-menu ">
-								<c:forEach items="${asignatura_list}" var="asignaturai">
-									<li><a href="#">${asignaturai.acronimo}</a></li>
-								</c:forEach>
-							</ul></li>
+						<li class><a href="FormProfesorAsignaturasServlet">Asignaturas impartidas</a></li>
 					</ul>
 				</div>
 			</div>
-				<div class="col-sm-9 col-md-10 affix-content">
-					<div class="container">
-						
-						<c:choose>
+			<div class="col-sm-9 col-md-10 affix-content">
+				<div class="container">
+
+					<c:choose>
 						<c:when test="${menuProfesor == 0}">
 							<%@ include file="LoginProfesorPerfil.jsp"%>
 						</c:when>
-						<%--
-						<c:when test="${tfgi.status == 5}">
-							<%@ include file="Form6Sec.jsp"%>
+						<c:when test="${menuProfesor == 1}">
+							<%@ include file="LoginProfesorAsignaturas.jsp"%>
 						</c:when>
+						
+						<%--
 						<c:when test="${tfgi.status == 7}">
 							<%@ include file="Form8Sec.jsp"%>
 						</c:when>
 						--%>
 					</c:choose>
-						
-					</div>
+
 				</div>
 			</div>
 		</div>
-	
+	</div>
+
 </body>
 </html>
