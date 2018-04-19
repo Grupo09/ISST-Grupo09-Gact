@@ -29,7 +29,15 @@ public class LoginResponsableServlet extends HttpServlet {
 			req.getSession().setAttribute("menuResponsable", 0);
 			resp.sendRedirect(req.getContextPath() + "/LoginResponsable.jsp");
 			
-		}else if(menu.equals("3")){
+		}else if(menu.equals("1")) {
+			
+			req.getSession().setAttribute("menuResponsable", 1);
+	
+			resp.sendRedirect(req.getContextPath() + "/LoginResponsable.jsp");
+			
+		}
+		
+		else if(menu.equals("3")){
 			req.getSession().setAttribute("menuResponsable", 3);
 			req.getSession().setAttribute("planEstudios_list", PlanEstudiosDAOImplementation.getInstance().readAll());
 			Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");

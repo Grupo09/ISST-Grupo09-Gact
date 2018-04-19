@@ -48,7 +48,7 @@
 							data-toggle="dropdown" href="#">Planes Estudio<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu ">
-									<li><a href="FormRespNuevoPlanServlet">Crear Plan</a></li>
+									<li><a href="LoginResponsableServlet?menu=1">Crear Plan</a></li>
 									<li><a href="FormRespEditarPlanServlet">Editar Plan</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
@@ -72,6 +72,10 @@
 						
 						<c:when test="${menuResponsable == 3}">
 							<%@ include file="FormRespNuevaAsignatura.jsp"%>
+						</c:when>
+						
+						<c:when test="${menuResponsable == 1}">
+							<%@ include file="FormRespNuevoPlan.jsp"%>
 						</c:when>
 						
 					</c:choose>
