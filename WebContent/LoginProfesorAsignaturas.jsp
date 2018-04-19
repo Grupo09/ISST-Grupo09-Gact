@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -21,7 +21,7 @@
 <body>
 
 
-	<table class="table table-striped" style="text-align:center">
+	<table class="table table-striped" style="text-align: center">
 		<tr>
 			<td><b>Asignatura</b></td>
 			<td><b>Horas Laboratorio</b></td>
@@ -31,9 +31,14 @@
 		<c:forEach items="${asignatura_list}" var="asignaturai">
 			<tr>
 				<td>${asignaturai.acronimo}</td>
-				<td>${asignaturai.horasLaboratorio}</td>
-				<td>${asignaturai.horasPractica}</td>
-				<td>${asignaturai.horasTeoria}</td>
+				<c:forEach items="${asignaturai.asignaciones}" var="asignacion">
+					<c:if test="${asignacion.profesor.email == profesor.email}">
+						<td>${asignacion.horasLaboratorio}</td>
+						<td>${asignacion.horasPractica}</td>
+						<td>${asignacion.horasTeoria}</td>
+					</c:if>
+				</c:forEach>
+
 			</tr>
 		</c:forEach>
 	</table>
