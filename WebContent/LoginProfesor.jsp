@@ -24,7 +24,8 @@
 	<div id="contenedor">
 		<ul class="nav nav-tabs nav-users">
 			<li class="nav-item"><a href="#">Salir</a></li>
-			<li class="nav-item active"><a class="nav-link" href="#">PROFESOR</a></li>
+			<li class="nav-item active"><a class="nav-link"
+				href="LogoutServlet">PROFESOR</a></li>
 			<c:if
 				test="${ profesor.email.equals(profesor.departamento.responsable.email)}">
 				<li class="nav-item"><a class="nav-link"
@@ -44,7 +45,8 @@
 					role="navigation">
 					<ul class="nav  navbar-nav nav-lateralMenu">
 						<li class><a href="LoginProfesorServlet?menu=0">Perfil</a></li>
-						<li class><a href="LoginProfesorServlet?menu=1">Asignaturas impartidas</a></li>
+						<li class><a href="LoginProfesorServlet?menu=1">Asignaturas
+								impartidas</a></li>
 					</ul>
 				</div>
 			</div>

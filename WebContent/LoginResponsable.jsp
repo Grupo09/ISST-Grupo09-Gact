@@ -24,7 +24,7 @@
 <body>
 	<div id="contenedor">
 		<ul class="nav nav-tabs nav-users">
-			<li class="nav-item"><a href="#">Salir</a></li>
+			<li class="nav-item"><a href="LogoutServlet">Salir</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="LoginProfesorServlet">PROFESOR</a></li>
 			<c:if
@@ -50,7 +50,8 @@
 								class="caret"></span></a>
 							<ul class="dropdown-menu ">
 								<li><a href="LoginResponsableServlet?menu=1">Crear Plan</a></li>
-								<li><a href="LoginResponsableServlet?menu=2">Editar Plan</a></li>
+								<li><a href="LoginResponsableServlet?menu=2">Editar
+										Plan</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Asignaturas<span

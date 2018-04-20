@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -21,6 +21,11 @@
 <title>Aplicación Gestión Docente</title>
 </head>
 <body>
+	<div id="contenedor">
+		<ul class="nav nav-tabs nav-users">
+			<li class="nav-item"><a href="LogoutServlet">Salir</a></li>
+		</ul>
+	</div>
 	<div class="container">
 		<div class="page-header">
 			<h3>CREAR DEPARTAMENTO</h3>
@@ -30,25 +35,24 @@
 			<h3>DEPARTAMENTOS</h3>
 		</div>
 		<table class="table table-bordered">
-		<tr>
-			<th>Código</th>
-			<th>Nombre</th>
-			<th>Acrónimo</th>
-			<th>Responsable</th>
-			
-		</tr>
-		<c:forEach items="${departamento_list}" var="departamentoi">
 			<tr>
-			
-				<td>${departamentoi.codigo}</td>
-				<td>${departamentoi.nombre}</td>
-				<td>${departamentoi.acronimo}</td>
-				<td>
-					<%@ include file="FormNuevoResponsable.jsp"%>
-				</td>		
+				<th>Código</th>
+				<th>Nombre</th>
+				<th>Acrónimo</th>
+				<th>Responsable</th>
+
 			</tr>
-		</c:forEach>
-	</table>		
+			<c:forEach items="${departamento_list}" var="departamentoi">
+				<tr>
+
+					<td>${departamentoi.codigo}</td>
+					<td>${departamentoi.nombre}</td>
+					<td>${departamentoi.acronimo}</td>
+					<td><%@ include file="FormNuevoResponsable.jsp"%>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>
