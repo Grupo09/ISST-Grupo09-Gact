@@ -43,14 +43,13 @@
 				<div class="affix-sidebar sidebar-nav navbar navbar-default"
 					role="navigation">
 					<ul class="nav  navbar-nav nav-lateralMenu">
-						<li class><a href="#">Perfil</a></li>
-						<li class><a href="FormProfesorAsignaturasServlet">Asignaturas impartidas</a></li>
+						<li class><a href="LoginProfesorServlet?menu=0">Perfil</a></li>
+						<li class><a href="LoginProfesorServlet?menu=1">Asignaturas impartidas</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-sm-9 col-md-10 affix-content">
 				<div class="container">
-
 					<c:choose>
 						<c:when test="${menuProfesor == 0}">
 							<%@ include file="LoginProfesorPerfil.jsp"%>
@@ -58,12 +57,6 @@
 						<c:when test="${menuProfesor == 1}">
 							<%@ include file="LoginProfesorAsignaturas.jsp"%>
 						</c:when>
-						
-						<%--
-						<c:when test="${tfgi.status == 7}">
-							<%@ include file="Form8Sec.jsp"%>
-						</c:when>
-						--%>
 					</c:choose>
 
 				</div>
