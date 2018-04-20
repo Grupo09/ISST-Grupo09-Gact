@@ -10,10 +10,12 @@ public interface AsignacionDAO {
 	
 	public void createAsignacion(Asignacion asignacion);
 	public Asignacion readAsociacion(long id);
+	public List <Asignacion> readAsociaciones ();
 	public void updateAsignacion(Asignacion asignacion);
 	public void deleteAsignacion(Asignacion asignacion);
 	public List<Asignatura> readAsignaturas(Profesor profesor);
-	public List<Profesor> readProfesor(String codigo);
+	public List<Profesor> readProfesor(Asignatura asignatura);
+	public long readId(Asignatura asignatura, Profesor profesor);
 
 }
 

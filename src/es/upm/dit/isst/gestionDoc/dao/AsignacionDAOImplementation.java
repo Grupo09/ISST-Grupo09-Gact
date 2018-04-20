@@ -34,7 +34,7 @@ public class AsignacionDAOImplementation implements AsignacionDAO{
 		} finally {
 			session.close();
 		}
-		
+
 	}
 
 	@Override
@@ -48,7 +48,27 @@ public class AsignacionDAOImplementation implements AsignacionDAO{
 			session.close();
 		}
 		return asignacion;
+	}	
+	@Override
+	public List<Asignacion> readAsociaciones() {
+		Session session = SessionFactoryService.get().openSession();
+		List <Asignacion> asignaciones = new ArrayList<>();
+
+		try {
+			session.beginTransaction();
+
+			asignaciones.addAll(session.createQuery("from Asignacion").getResultList());
+
+			session.getTransaction().commit();
+		}catch (Exception e) {
+
+		}finally {
+			session.close();
+		}
+
+		return asignaciones;
 	}
+
 
 	@Override
 	public void updateAsignacion(Asignacion asignacion) {
@@ -61,7 +81,7 @@ public class AsignacionDAOImplementation implements AsignacionDAO{
 		} finally {
 			session.close();
 		}		
-		
+
 	}
 
 	@Override
@@ -76,7 +96,7 @@ public class AsignacionDAOImplementation implements AsignacionDAO{
 		} finally {
 			session.close();
 		}		
-		
+
 	}
 
 	@Override
@@ -85,7 +105,7 @@ public class AsignacionDAOImplementation implements AsignacionDAO{
 		List<Asignatura> asignaturas = new ArrayList<>();
 		try {
 			session.beginTransaction();
-			
+
 			asignaturas.addAll(session.createQuery("select a.asignatura from Asignacion a where a.profesor= :profesor")
 					.setParameter("profesor", profesor).getResultList());
 			session.getTransaction().commit();
@@ -93,15 +113,45 @@ public class AsignacionDAOImplementation implements AsignacionDAO{
 		} finally {
 			session.close();
 		}
-		
+
 		return asignaturas;
 	}
-	
+
+
+	public List<Profesor> readProfesor(Asignatura asignatura) {
+		Session session = SessionFactoryService.get().openSession();
+		List<Profesor> profesores = new ArrayList<>();
+		try {
+			session.beginTransaction();
+
+			profesores.addAll(session.createQuery("select a.profesor from Asignacion a where a.asignatura= :asignatura")
+					.setParameter("asignatura", asignatura).getResultList());
+			session.getTransaction().commit();
+		} catch (Exception e) {
+		} finally {
+			session.close();
+		}
+
+		return profesores;
+	}
 
 	@Override
-	public List<Profesor> readProfesor(String codigo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public long readId(Asignatura asignatura, Profesor profesor) {
+		Session session = SessionFactoryService.get().openSession();
+		Asignacion asignacion = null;
+		try {
+			session.beginTransaction();
+			asignacion = (Asignacion) session.createQuery("select a.id from Asignacion a where a.profesor= :profesor and a.asignatura= :asignatura")
+					.setParameter("profesor", profesor).setParameter("asignatura", asignatura).uniqueResult();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+		} finally {
+			session.close();
+		}
+		return asignacion.getId();
+	}	// TODO Auto-generated method stub
+
+
+
 
 }

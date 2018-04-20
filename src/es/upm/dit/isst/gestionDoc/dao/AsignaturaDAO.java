@@ -12,6 +12,9 @@ public interface AsignaturaDAO {
 	public void updateAsignatura(Asignatura asignatura);
 	public void deleteAsignatura(Asignatura asignatura);
 	public List<Asignatura> readAsignaturaCoordinador(Profesor profesor);
+	
+	// Para hacer un listado de todas las asignaturas
+	public List<Asignatura> readAll();
 
 }
 

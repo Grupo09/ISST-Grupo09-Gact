@@ -97,4 +97,24 @@ public class AsignaturaDAOImplementation implements AsignaturaDAO {
 		
 	}
 
+	@Override
+	public List<Asignatura> readAll() {
+		Session session = SessionFactoryService.get().openSession();
+		List <Asignatura> asignaturas = new ArrayList<>();
+		
+		try {
+			session.beginTransaction();
+			
+			asignaturas.addAll(session.createQuery("from Asignatura").getResultList());
+			
+			session.getTransaction().commit();
+		}catch (Exception e) {
+			
+		}finally {
+			session.close();
+		}
+		
+		return asignaturas;
+	}
+
 }

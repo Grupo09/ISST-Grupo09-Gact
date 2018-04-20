@@ -33,7 +33,7 @@ public class Asignatura implements Serializable {
 	@OneToMany(mappedBy="asignatura", fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
 	private List<Asignacion> asignaciones;
-	@ManyToOne
+	@ManyToOne 
 	private PlanEstudios planEstudios;
 	@ManyToOne
 	private Departamento departamentoAsignatura;
