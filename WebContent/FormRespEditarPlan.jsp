@@ -9,40 +9,55 @@
 <meta charset="UTF-8">
 <body onload="myFunction()">
 
-	<script>
-		function myFunction() {
-			if (document.getElementById("def").selected) {
-				document.getElementById("nombre").style.display = "none";
-				document.getElementById("acronimo").style.display = "none";
-
-			} else {
-				document.getElementById("nombre").style.display = "inline";
-				document.getElementById("acronimo").style.display = "inline";
-
-			}
-		}
-	</script>
-
-	<form action="FormRespEditarPlanServlet">
+<div class="page-header">
+	<h3>Editar plan de estudios</h3>
+</div>
 
 
+<script>
+function myFunction() {
+	if(document.getElementById("def").selected){
+		document.getElementById("nombre").style.display = "none";
+		document.getElementById("acronimo").style.display = "none";
 
-		<select id="selector" onchange="myFunction()" name="codigo"
-			class="form-control">
-			<option id="def">Elija Plan</option>
+	}else{
+		document.getElementById("nombre").style.display = "inline";
+		document.getElementById("acronimo").style.display = "inline";
+
+	}
+}
+</script>
+
+<form action="FormRespEditarPlanServlet">
+
+		
+	<div class="col-sm-4"> 
+		<select  style=" margin-bottom: 20px;" id = "selector" onchange="myFunction()" name="codigo" class="form-control">
+			<option id="def"  >Elija Plan</option>
 			<c:forEach items="${plan_list}" var="planEstudioi">
 				<option value="${ planEstudioi.codigo}">${planEstudioi.codigo}</option>
 			</c:forEach>
-		</select> <input id="nombre" type="text" name="nombre" class="form-control"
-			placeholder="Nombre completo"> <input id="acronimo"
-			type="text" name="acronimo" class="form-control"
-			placeholder="Acrónimos">
+		</select>
+		</div>
+		
+		 
+	      <div class="col-sm-4">   
+	
+		<input  class="form-control" id = "nombre" type="text" name="nombre" class="form-control" placeholder="Nombre completo"> 
+		</div>
+		
+	    <div class="col-sm-4">
+		<input  class="form-control" id = "acronimo" type="text" name="acronimo" class="form-control" placeholder="Acrónimos"> 
+		</div>
+	
+      <div class="col-sm-12">   
+	<button  class="btn btn-primary" type="submit" style="margin-top: 40px; margin-bottom: 10px;">EditarPlan</button>
+	
+	<button class="btn btn-danger"  type="submit" formaction="FormRespEliminarPlanServlet" style="margin-top: 40px; margin-bottom: 10px;">Eliminar plan</button>	
+	
+	</div>
+	
 
-
-
-
-		<button type="submit">EditarPlan</button>
-
-	</form>
+</form>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 	<head>
     <!-- Required meta tags -->
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
   
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="./style/login.css">  

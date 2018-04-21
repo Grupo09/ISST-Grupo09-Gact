@@ -1,8 +1,7 @@
 package es.upm.dit.isst.gestionDoc.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,28 +15,27 @@ import es.upm.dit.isst.gestionDoc.dao.model.PlanEstudios;
 /**
  * Servlet implementation class FormRespNuevaAsignaturaServlet
  */
-@WebServlet("/FormRespNuevoPlanServlet")
-public class FormRespNuevoPlanServlet extends HttpServlet {
+@WebServlet("/FormRespEliminarPlanServlet")
+public class FormRespEliminarPlanServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		
 		String codigo = req.getParameter("codigo");
-		String nombre = req.getParameter("nombre");
-		String acronimo = req.getParameter("acronimo");
 		
-		PlanEstudios plan = new PlanEstudios();
-		plan.setCodigo(codigo);
-		plan.setNombre(nombre);
-		plan.setAcronimo(acronimo);
+		
+		PlanEstudios plan = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(codigo);
+		
+		
 		
 	
-		PlanEstudiosDAOImplementation.getInstance().createPlanEstudios(plan);
-		
-		
+		PlanEstudiosDAOImplementation.getInstance().deletePlanEstudios(plan);
 		req.getSession().setAttribute("menuResponsable", 0);
-		resp.sendRedirect(req.getContextPath()+"/LoginResponsable.jsp");
-	}
-	
-	
 
-}
+		resp.sendRedirect(req.getContextPath() + "/LoginResponsable.jsp");
+		
+	}
+		
+	}
