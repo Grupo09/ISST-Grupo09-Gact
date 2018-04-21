@@ -14,6 +14,7 @@ import com.itextpdf.text.log.SysoCounter;
 import es.upm.dit.isst.gestionDoc.dao.AsignaturaDAOImplementation;
 import es.upm.dit.isst.gestionDoc.dao.PlanEstudiosDAOImplementation;
 import es.upm.dit.isst.gestionDoc.dao.ProfesorDAOImplementation;
+import es.upm.dit.isst.gestionDoc.dao.model.Asignatura;
 import es.upm.dit.isst.gestionDoc.dao.model.Departamento;
 import es.upm.dit.isst.gestionDoc.dao.model.Profesor;
 
@@ -59,6 +60,15 @@ public class LoginResponsableServlet extends HttpServlet {
 			req.getSession().setAttribute("profesorDepartamento_list", profesores);
 			resp.sendRedirect(req.getContextPath() + "/LoginResponsable.jsp");
 
+		} else if (menu.equals("5")) {
+			req.getSession().setAttribute("menuResponsable", 5);
+			req.getSession().setAttribute("planEstudios_list", PlanEstudiosDAOImplementation.getInstance().readAll());
+			req.getSession().setAttribute("asignaturas_list", AsignaturaDAOImplementation.getInstance().readAll());
+			Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
+			List<Profesor> profesores = profesor.getDepartamento().getProfesores();
+			req.getSession().setAttribute("profesorDepartamento_list", profesores);
+			resp.sendRedirect(req.getContextPath() + "/LoginResponsable.jsp");
+			
 		}
 
 	}

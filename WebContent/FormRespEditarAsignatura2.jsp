@@ -10,6 +10,16 @@
 
 		
 		<input type="hidden" name="planEstudios" class="form-control" placeholder="Código" value="${planEstudios }" > 
+		
+	    <select name="codigo" class="form-control">
+		<option value=" " disabled selected>Elija Asignatura</option>
+
+		<c:forEach items="${asignaturas_list}" var="asignaturai">
+			<option value="${ asignaturai.codigo}">${ asignaturai.codigo}
+			</option>
+		</c:forEach>
+		</select>
+		
 		<input type="text" name="codigo" class="form-control" placeholder="Código" value="${asignatura.codigo }" > 
 		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo" value="${asignatura.nombre }" > 
 		<input type="text" name="acronimo" class="form-control" placeholder="Acrónimos" value="${asignatura.acronimo }"> 

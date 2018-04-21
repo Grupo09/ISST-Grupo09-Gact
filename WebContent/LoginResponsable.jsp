@@ -82,6 +82,9 @@
 							<%@ include file="FormRespNuevaAsignatura.jsp"%>
 						</c:when>
 						<c:when test="${menuResponsable == 4}">
+							<%@ include file="FormRespEditarAsignatura.jsp"%>
+						</c:when>
+						<c:when test="${menuResponsable == 5}">
 							<%@ include file="FormRespEditarAsignatura2.jsp"%>
 						</c:when>
 
