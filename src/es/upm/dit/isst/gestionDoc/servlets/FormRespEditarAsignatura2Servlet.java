@@ -43,6 +43,7 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 
 		System.out.println(req.getParameter("curso")+"/"+req.getParameter("semestre")+"/"+req.getParameter("grupos")+"/"+req.getParameter("horasTeoria")+"/"+req.getParameter("horasPractica")
 		+"/"+req.getParameter("horasLaboratorio")+"/"+req.getParameter("coordinador"));
+		System.out.println("EL PLAN DE ESTUDIOS CODIGO ES "+planEstudiosCodigo);
 		int curso = Integer.parseInt(req.getParameter("curso"));
 		int semestre = Integer.parseInt(req.getParameter("semestre"));
 		int grupos = Integer.parseInt(req.getParameter("grupos"));
@@ -94,16 +95,33 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 
 		List <Asignacion> asignaciones = AsignacionDAOImplementation.getInstance().readAsociaciones();
 		System.out.println("El tamaño de las asignacioneeeees eeeeeees"+ asignaciones.size());
-
-		List <Asignacion> asignacionesBuenas = new ArrayList<>();
-		System.out.println("Numero a comparar"+codigo);
-		for (Asignacion asignacion : asignaciones) {
-			System.out.println(asignacion.getAsignatura().getCodigo()+" Este es el numero");
-			if (asignacion.getAsignatura().getCodigo().equals(codigo)) {
-				asignacionesBuenas.add(asignacion);
+		
+		
+		//Ahora voy a eliminar las asignaciones de los profesores que por desgracia ya no están 
+		
+		boolean  profEncontrado=false;
+		for (Profesor profesor : profAntes) {
+			for (Profesor ahora : profAhora) {
+				if (profesor.getEmail().equals(ahora.getEmail())) {
+					profEncontrado=true;
+					break;
+				}
+				
+			}
+			if (!profEncontrado) {
+				long id =0;
+				for(Asignacion asig: asignaciones) {
+					if (asig.getAsignatura().getCodigo().equals(asignatura.getCodigo())
+							&& asig.getProfesor().getEmail().equals(profesor.getEmail())) {
+						id= asig.getId();
+					}
+				}
+				
+				AsignacionDAOImplementation.getInstance().deleteAsignacion(AsignacionDAOImplementation.getInstance().readAsociacion(id));
+				profEncontrado=false;
+			
 			}
 		}
-		System.out.println("El tamaño de las asignacioneeeees buena eeeeeees"+ asignacionesBuenas.size());
 
 		//Ahora ya solo tengo la de las asignatura lueeeego
 
@@ -115,9 +133,10 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 					System.out.println("LA ID ES :   "+ asignacion.getId());
 					encontrado=true;
 					asignacion.setProfesor(profesor);
-					asignacion.setHorasLaboratorio(horasLaboratorio);
-					asignacion.setHorasPractica(horasPractica);
-					asignacion.setHorasTeoria(horasTeoria);
+					//No tengo que tocar las horas de cada profesor tarea del responsable
+//					asignacion.setHorasLaboratorio(horasLaboratorio);
+//					asignacion.setHorasPractica(horasPractica);
+//					asignacion.setHorasTeoria(horasTeoria);
 					asignacion.setAsignatura(asignatura);
 					AsignacionDAOImplementation.getInstance().updateAsignacion(asignacion);
 					break;
@@ -127,9 +146,10 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 				System.out.println("Entre por que NOOOOO ha habido conincidence");
 				Asignacion asignacion = new Asignacion();
 				asignacion.setProfesor(profesor);
-				asignacion.setHorasLaboratorio(horasLaboratorio);
-				asignacion.setHorasPractica(horasPractica);
-				asignacion.setHorasTeoria(horasTeoria);
+				//No hay que tocar las horas de cada profesor es cosa del cordinador 
+//				asignacion.setHorasLaboratorio(horasLaboratorio);
+//				asignacion.setHorasPractica(horasPractica);
+//				asignacion.setHorasTeoria(horasTeoria);
 				asignacion.setAsignatura(asignatura);
 				AsignacionDAOImplementation.getInstance().createAsignacion(asignacion);
 

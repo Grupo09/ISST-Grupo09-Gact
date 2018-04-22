@@ -1,6 +1,9 @@
 <form action="FormRespEditarAsignatura1Servlet">
 	<input type="hidden" name="departamento"
-		value="${ profesor.departamento.codigo}"> 
+		value="${ profesor.departamento.codigo}">
+		
+		<input type="hidden" name="planEstudios"
+		value="${planEstudios}"> 
 		
 		
 		<select name="codigo" class="form-control">

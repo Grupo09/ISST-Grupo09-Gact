@@ -1,6 +1,7 @@
 <form action="FormRespEditarAsignaturaServlet">
 	<input type="hidden" name="departamento"
-		value="${ profesor.departamento.codigo}"> <select
+		value="${ profesor.departamento.codigo}">
+		 <select
 		name="planEstudios" class="form-control">
 		<option value="" disabled selected>Elija Plan</option>
 		<c:forEach items="${planEstudios_list}" var="planEstudioi">

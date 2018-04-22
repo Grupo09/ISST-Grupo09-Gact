@@ -34,6 +34,7 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String planEstudiosCodigo = req.getParameter("planEstudios");
 		String departamentoCodigo = req.getParameter("departamento");
 
@@ -60,10 +61,6 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 		PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
 
 		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoCodigo);
-
-
-
-		//Asignatura asignatura = AsignaturaDAOImplementation.getInstance().readAsignatura(asignaturaCodigo);
 
 		req.getSession().setAttribute("planEstudios", planEstudios);
 		req.getSession().setAttribute("departamento", departamento);

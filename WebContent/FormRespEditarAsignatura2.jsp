@@ -9,30 +9,21 @@
 		value="${ asignatura }">
 
 		
-		<input type="hidden" name="planEstudios" class="form-control" placeholder="Código" value="${planEstudios }" > 
+		<input type="hidden" name="planEstudios" class="form-control" placeholder="Código" value="${planEstudios.codigo}" > 
 		
-	    <select name="codigo" class="form-control">
-		<option value=" " disabled selected>Elija Asignatura</option>
-
-		<c:forEach items="${asignaturas_list}" var="asignaturai">
-			<option value="${ asignaturai.codigo}">${ asignaturai.codigo}
-			</option>
-		</c:forEach>
-		</select>
-		
-		<input type="text" name="codigo" class="form-control" placeholder="Código" value="${asignatura.codigo }" > 
-		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo" value="${asignatura.nombre }" > 
-		<input type="text" name="acronimo" class="form-control" placeholder="Acrónimos" value="${asignatura.acronimo }"> 
-		<input type="text" name="creditos" class="form-control" placeholder="Créditos" value="${asignatura.creditos }"> 
-		<input type="number" name="curso" class="form-control" placeholder="Curso" value="${asignatura.curso }">
-		<input type="number" name="semestre" class="form-control"placeholder="Semestre" value="${asignatura.semestre }"> 
-		<input type="number" name="grupos" class="form-control" placeholder="Número de grupos" value="${asignatura.grupos}">
-	 	<input type="number" name="horasTeoria" class="form-control" placeholder="Horas Teoría" value="${asignatura.horasTeoria }"> 
-	 	<input type="number" name="horasPractica" class="form-control" placeholder="Horas Práctica" value="${asignatura.horasPractica }">
-		<input type="number" name="horasLaboratorio" class="form-control" placeholder="Horas Laboratorio" value="${asignatura.horasLaboratorio}"> 
+		<input type="text" name="codigo" class="form-control" placeholder="Código"  > 
+		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo" " > 
+		<input type="text" name="acronimo" class="form-control" placeholder="Acrónimos"> 
+		<input type="text" name="creditos" class="form-control" placeholder="Créditos"> 
+		<input type="number" name="curso" class="form-control" placeholder="Curso" >
+		<input type="number" name="semestre" class="form-control"placeholder="Semestre"> 
+		<input type="number" name="grupos" class="form-control" placeholder="Número de grupos" >
+	 	<input type="number" name="horasTeoria" class="form-control" placeholder="Horas Teoría" > 
+	 	<input type="number" name="horasPractica" class="form-control" placeholder="Horas Práctica" >
+		<input type="number" name="horasLaboratorio" class="form-control" placeholder="Horas Laboratorio" > 
 		
 		<select multiple name="b" id='lstBox1' class="form-control">
-			<c:forEach items="${profesor.departamento.profesores}" var="profesori">
+			<c:forEach items="${profDisponible_lista}" var="profesori">
 				<option value="${ profesori.email}">${profesori.nombre}</option>
 			</c:forEach>
 		</select> 
@@ -40,7 +31,7 @@
 		<input type='button' id='btnRight'value='Añadir Profesor' class="btn btn-default" /> 
 		
 		<select multiple  id='lstBox2' class="form-control">
-			<c:forEach items="${profesor.departamento.profesores}" var="profesori">
+			<c:forEach items="${profAsignatura_lista}" var="profesori">
 				<option value="${ profesori.email}">${profesori.nombre}</option>
 			</c:forEach>
 		</select>
