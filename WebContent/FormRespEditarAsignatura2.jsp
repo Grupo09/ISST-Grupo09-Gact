@@ -40,6 +40,9 @@
 		<input type='button' id='btnRight'value='Añadir Profesor' class="btn btn-default" /> 
 		
 		<select multiple  id='lstBox2' class="form-control">
+			<c:forEach items="${profesor.departamento.profesores}" var="profesori">
+				<option value="${ profesori.email}">${profesori.nombre}</option>
+			</c:forEach>
 		</select>
 		<select style="visibility: hidden; height: 0 !important;"  multiple name="ProfesoresSeleccionados"  id='lstBox3' class="form-control" >
 		</select>

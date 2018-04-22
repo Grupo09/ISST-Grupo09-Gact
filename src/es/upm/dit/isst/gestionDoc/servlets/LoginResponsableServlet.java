@@ -68,6 +68,16 @@ public class LoginResponsableServlet extends HttpServlet {
 			List<Profesor> profesores = profesor.getDepartamento().getProfesores();
 			req.getSession().setAttribute("profesorDepartamento_list", profesores);
 			resp.sendRedirect(req.getContextPath() + "/LoginResponsable.jsp");
+
+		
+		} else if (menu.equals("6")) {
+			req.getSession().setAttribute("menuResponsable", 6);
+			req.getSession().setAttribute("planEstudios_list", PlanEstudiosDAOImplementation.getInstance().readAll());
+			req.getSession().setAttribute("asignaturas_list", AsignaturaDAOImplementation.getInstance().readAll());
+			Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
+			List<Profesor> profesores = profesor.getDepartamento().getProfesores();
+			req.getSession().setAttribute("profesorDepartamento_list", profesores);
+			resp.sendRedirect(req.getContextPath() + "/LoginResponsable.jsp");
 			
 		}
 

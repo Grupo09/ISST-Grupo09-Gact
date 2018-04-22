@@ -8,16 +8,9 @@
 		</c:forEach>
 
 	</select>
-	<%--  <select name="codigo" class="form-control">
-		<option value=" " disabled selected>Elija Asignatura</option>
 
-		<c:forEach items="${asignaturas_list}" var="asignaturai">
-			<option value="${ asignaturai.codigo}">${ asignaturai.codigo}
-			</option>
-		</c:forEach>
-	</select>  --%>
 	<div class="clearfix"></div>
 
-	<button type="submit">Editar Asignatura</button>
+	<button type="submit">Elegir Plan</button>
 
 </form>

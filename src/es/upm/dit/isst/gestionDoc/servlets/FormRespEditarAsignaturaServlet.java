@@ -35,13 +35,12 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String planEstudiosCodigo = req.getParameter("planEstudios");
-		//String asignaturaCodigo = req.getParameter("codigo");
 		String departamentoCodigo = req.getParameter("departamento");
 
 		List<Asignatura> lista = AsignaturaDAOImplementation.getInstance().readAll();
 		List<Asignatura> lista2 = new ArrayList<>();
 
-		System.out.println(lista.size());
+		//System.out.println(lista.size());
 		
 		
 
@@ -56,8 +55,8 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 				}
 
 		}
-		System.out.println(lista2.size());
-		System.out.println(" el plan de estudios es "+ planEstudiosCodigo + "el plan de departamento es "+ departamentoCodigo);
+//		System.out.println(lista2.size());
+//		System.out.println(" el plan de estudios es "+ planEstudiosCodigo + "el plan de departamento es "+ departamentoCodigo);
 		PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
 
 		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoCodigo);
