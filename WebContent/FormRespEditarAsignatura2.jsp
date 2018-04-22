@@ -5,8 +5,8 @@
 	<input type="hidden" name="departamento"
 		value="${profesor.departamento.codigo}"> 
 		
-		<input type = "hidden" name="asignatura"
-		value="${ asignatura }">
+		<input type = "text" name="asignatura"
+		value="${ asignatura.codigo}">
 
 		
 		<input type="hidden" name="planEstudios" class="form-control" placeholder="Código" value="${planEstudios.codigo}" > 
@@ -45,9 +45,11 @@
 			
 		</select> 
 	
-
-	<div class="clearfix"></div>
-	<button type="submit"> Editar Asignatura </button>
-
+ 	<div class="col-sm-12">   
+	<button  class="btn btn-primary" type="submit" style="margin-top: 40px; margin-bottom: 10px;">Editar Asignatura</button>
+	
+	<button class="btn btn-danger"  type="submit" formaction="FormRespEliminarAsignaturaServlet" style="margin-top: 40px; margin-bottom: 10px;">Eliminar Asignatura</button>	
+	
+	</div>
 	
 </form>

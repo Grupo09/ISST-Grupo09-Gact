@@ -69,6 +69,7 @@ public class AsignaturaDAOImplementation implements AsignaturaDAO {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
+			System.out.println("Eliminado asignatura");
 			session.delete(asignatura);
 			session.getTransaction().commit();
 		} catch (Exception e) {
