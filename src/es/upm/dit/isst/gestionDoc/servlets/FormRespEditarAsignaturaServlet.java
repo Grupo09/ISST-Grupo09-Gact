@@ -43,15 +43,9 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 		List<Asignatura> lista = AsignaturaDAOImplementation.getInstance().readAll();
 		List<Asignatura> lista2 = new ArrayList<>();
 
-		//System.out.println(lista.size());
-		
-		
-
 		for (Asignatura a : lista) {
-			System.out.println("LAS COSAS DE LAS ASIGNATURAS GUARDADAS");
-			System.out.print(a.getPlanEstudios());
-			System.out.println(a.getDepartamentoAsignatura());
-			if (a.getDepartamentoAsignatura().getCodigo().equals(departamentoCodigo) && a.getPlanEstudios().getCodigo().equals(planEstudiosCodigo)) {
+			if (a.getDepartamentoAsignatura().getCodigo().equals(departamentoCodigo) 
+					&& a.getPlanEstudios().getCodigo().equals(planEstudiosCodigo)) {
 
 
 				lista2.add(a);

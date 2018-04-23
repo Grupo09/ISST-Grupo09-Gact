@@ -78,14 +78,16 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 
 
 		String [] profesoresEmail = req.getParameterValues("ProfesoresSeleccionados");
-		System.out.println(profesoresEmail.length);
+		
 
 		List<Profesor> profAhora = new ArrayList<>();
-		for( String email : profesoresEmail) {
-			profAhora.add(ProfesorDAOImplementation.getInstance().readProfesor(email));
-
-
+		if (profesoresEmail != null) {
+			for( String email : profesoresEmail) {
+				profAhora.add(ProfesorDAOImplementation.getInstance().readProfesor(email));
+			}
+			
 		}
+		
 		System.out.println("LA LISTA DE AHORA es "+ profAhora.size());
 		// Ya tengo los profs de ahora, ahora hago los mismo con los de antes pero solamente en esa asignatura
 		List<Profesor> profAntes = new ArrayList<>();
@@ -156,7 +158,8 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 
 
 		}
-
+		Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
+		req.getSession().setAttribute("asignaturaCoordinador_list", AsignaturaDAOImplementation.getInstance().readAsignaturaCoordinador(profesor));
 		req.setAttribute("menuResponsable", 0);
 		resp.sendRedirect(req.getContextPath() + "/LoginResponsableServlet");
 

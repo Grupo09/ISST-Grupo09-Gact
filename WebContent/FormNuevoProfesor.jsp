@@ -9,7 +9,7 @@
 			placeholder="Nombre completo">
 	</div>
 	<div class="col-sm-3">
-		<input type="text" name="password" class="form-control"
+		<input type="password" name="password" class="form-control"
 			placeholder="Contraseña">
 	</div>
 	<div class="col-sm-3">

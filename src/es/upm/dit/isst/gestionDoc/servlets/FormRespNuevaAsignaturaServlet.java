@@ -77,7 +77,8 @@ public class FormRespNuevaAsignaturaServlet extends HttpServlet {
 				AsignacionDAOImplementation.getInstance().createAsignacion(asignacion);
 			}
 		}
-		
+		Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
+		req.getSession().setAttribute("asignaturaCoordinador_list", AsignaturaDAOImplementation.getInstance().readAsignaturaCoordinador(profesor));
 		req.getSession().setAttribute("menuResponsable", 0);
 		resp.sendRedirect(req.getContextPath()+"/LoginResponsable.jsp");
 	}

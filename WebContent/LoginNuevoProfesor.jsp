@@ -23,7 +23,7 @@
 <body>
 	<div class="container">
 		<div class="page-header">
-			<h3>CREAR DEPARTAMENTO</h3>
+			<h3>REGISTRAR NUEVO PROFESOR</h3>
 		</div>
 		<%@ include file="FormNuevoProfesor.jsp"%>
 	</div>
