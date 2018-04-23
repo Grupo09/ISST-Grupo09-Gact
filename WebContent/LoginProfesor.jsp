@@ -23,7 +23,7 @@
 <body>
 	<div id="contenedor">
 		<ul class="nav nav-tabs nav-users">
-			<li class="nav-item"><a href="#">Salir</a></li>
+			<li class="nav-item"><a href="LogoutServlet">Salir</a></li>
 			<li class="nav-item active"><a class="nav-link"
 				href="LogoutServlet">PROFESOR</a></li>
 			<c:if

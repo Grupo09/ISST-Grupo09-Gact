@@ -37,6 +37,8 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 		
 		String planEstudiosCodigo = req.getParameter("planEstudios");
 		String departamentoCodigo = req.getParameter("departamento");
+		PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
+		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoCodigo);
 
 		List<Asignatura> lista = AsignaturaDAOImplementation.getInstance().readAll();
 		List<Asignatura> lista2 = new ArrayList<>();
@@ -45,22 +47,20 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 		
 		
 
-		for (int i = 0; i< lista.size(); i++) {
+		for (Asignatura a : lista) {
 			System.out.println("LAS COSAS DE LAS ASIGNATURAS GUARDADAS");
-			System.out.print(lista.get(i).getPlanEstudios().getCodigo());
-			System.out.println(lista.get(i).getDepartamentoAsignatura().getCodigo());
-			if (lista.get(i).getDepartamentoAsignatura().getCodigo().equals(departamentoCodigo) && lista.get(i).getPlanEstudios().getCodigo().equals(planEstudiosCodigo)) {
+			System.out.print(a.getPlanEstudios());
+			System.out.println(a.getDepartamentoAsignatura());
+			if (a.getDepartamentoAsignatura().getCodigo().equals(departamentoCodigo) && a.getPlanEstudios().getCodigo().equals(planEstudiosCodigo)) {
 
 
-				lista2.add(lista.get(i));
+				lista2.add(a);
 				}
 
 		}
 //		System.out.println(lista2.size());
 //		System.out.println(" el plan de estudios es "+ planEstudiosCodigo + "el plan de departamento es "+ departamentoCodigo);
-		PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
-
-		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoCodigo);
+		
 
 		req.getSession().setAttribute("planEstudios", planEstudios);
 		req.getSession().setAttribute("departamento", departamento);

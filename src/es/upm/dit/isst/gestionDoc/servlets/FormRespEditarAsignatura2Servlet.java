@@ -31,9 +31,7 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String planEstudiosCodigo = req.getParameter("planEstudios");
-		
-		
-		String codigo = req.getParameter("asignatura");
+		String codigo = req.getParameter("codigo");
 		String menu = req.getParameter("manera");
 		Asignatura asignatura= AsignaturaDAOImplementation.getInstance().readAsignatura(codigo);
 		System.out.println(menu);
@@ -42,12 +40,10 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 		String nombre = req.getParameter("nombre");
 		String acronimo = req.getParameter("acronimo");
 		String creditos = req.getParameter("creditos");
-		String departamentoCodigo = req.getParameter("departamento");
 
 		System.out.println(req.getParameter("curso")+"/"+req.getParameter("semestre")+"/"+req.getParameter("grupos")+"/"+req.getParameter("horasTeoria")+"/"+req.getParameter("horasPractica")
 		+"/"+req.getParameter("horasLaboratorio")+"/"+req.getParameter("coordinador"));
 		System.out.println("EL PLAN DE ESTUDIOS CODIGO ES "+planEstudiosCodigo);
-		
 		int curso = Integer.parseInt(req.getParameter("curso"));
 		int semestre = Integer.parseInt(req.getParameter("semestre"));
 		int grupos = Integer.parseInt(req.getParameter("grupos"));
@@ -58,15 +54,10 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 
 		Profesor coordinador = ProfesorDAOImplementation.getInstance().readProfesor(coordinadorEmail);
 
-		//PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
-		
+		PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
+		String departamentoCodigo = req.getParameter("departamento");
 		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoCodigo);
-		
-		
-		// son dos parametros que no voy a volver a cambiar son fijos desde su creacion
-//		asignatura.setPlanEstudios(planEstudios);
-		
-//		asignatura.setCodigo(codigo);
+		asignatura.setPlanEstudios(planEstudios);
 		asignatura.setNombre(nombre);
 		asignatura.setAcronimo(acronimo);
 		asignatura.setCreditos(creditos);
@@ -154,10 +145,10 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 				System.out.println("Entre por que NOOOOO ha habido conincidence");
 				Asignacion asignacion = new Asignacion();
 				asignacion.setProfesor(profesor);
-				//No hay que tocar las horas de cada profesor es cosa del cordinador 
-//				asignacion.setHorasLaboratorio(horasLaboratorio);
-//				asignacion.setHorasPractica(horasPractica);
-//				asignacion.setHorasTeoria(horasTeoria);
+				 
+				asignacion.setHorasLaboratorio(0);
+				asignacion.setHorasPractica(0);
+				asignacion.setHorasTeoria(0);
 				asignacion.setAsignatura(asignatura);
 				AsignacionDAOImplementation.getInstance().createAsignacion(asignacion);
 

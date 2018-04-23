@@ -35,16 +35,9 @@ public class FormRespEliminarPlanServlet extends HttpServlet {
 		
 		//Ahi que borrar las asignaturas antes de borrar plan
 		
-		List<Asignatura> asignatura = AsignaturaDAOImplementation.getInstance().readAll();
-		List <Asignatura> asignaturaB = new ArrayList<>();
+		List<Asignatura> asignaturas = plan.getAsignaturas();
 		
-		for (Asignatura a : asignatura) {
-			if ( a.getPlanEstudios().getCodigo().equals(codigo)) {
-				asignaturaB.add(a);
-			}
-		}
-		
-		for (Asignatura a : asignaturaB) {
+		for (Asignatura a : asignaturas) {
 			for(Asignacion asig: a.getAsignaciones()) {
 				AsignacionDAOImplementation.getInstance().deleteAsignacion(asig);
 				

@@ -7,15 +7,15 @@
 <form action="FormRespNuevoPlanServlet">
 
 		 <div class="col-sm-4">
-		<input type="text" name="codigo" class="form-control" placeholder="Código"> 
+		<input type="text" name="codigo" class="form-control" placeholder="Código" required> 
 		</div>
 		
 		 <div class="col-sm-4">
-		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo"> 
+		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo" required> 
 		</div>
 		
 		 <div class="col-sm-4">
-		<input type="text" name="acronimo" class="form-control" placeholder="Acrónimos"> 
+		<input type="text" name="acronimo" class="form-control" placeholder="Acrónimos" required> 
 		</div>
 		
 	

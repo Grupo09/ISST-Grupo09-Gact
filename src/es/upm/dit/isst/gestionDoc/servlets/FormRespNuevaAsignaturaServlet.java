@@ -64,7 +64,7 @@ public class FormRespNuevaAsignaturaServlet extends HttpServlet {
 		AsignaturaDAOImplementation.getInstance().createAsignatura(asignatura);
 		  
 		String [] profesoresEmail = req.getParameterValues("ProfesoresSeleccionados");
-		System.out.println(profesoresEmail.length);
+		//System.out.println(profesoresEmail.length);
 		if (profesoresEmail != null) {
 			for(int i = 0; i<profesoresEmail.length; i++) {
 				Asignacion asignacion = new Asignacion();

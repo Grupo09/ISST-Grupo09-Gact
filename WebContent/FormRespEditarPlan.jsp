@@ -29,8 +29,8 @@ function myFunction() {
 </script>
 
 <form action="FormRespEditarPlanServlet">
-
-		
+	<input type="hidden" name="departamento"
+		value="${ profesor.departamento.codigo}">  	
 	<div class="col-sm-4"> 
 		<select  style=" margin-bottom: 20px;" id = "selector" onchange="myFunction()" name="codigo" class="form-control">
 			<option id="def"  >Elija Plan</option>
@@ -47,7 +47,7 @@ function myFunction() {
 		</div>
 		
 	    <div class="col-sm-4">
-		<input  class="form-control" id = "acronimo" type="text" name="acronimo" class="form-control" placeholder="Acrónimos"> 
+		<input  class="form-control" id = "acronimo" type="text" name="acronimo" class="form-control" placeholder="Acrónimo"> 
 		</div>
 	
       <div class="col-sm-12">   

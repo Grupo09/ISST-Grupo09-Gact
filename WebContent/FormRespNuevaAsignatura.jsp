@@ -7,16 +7,16 @@
 				<option value="${ planEstudioi.codigo}">${planEstudioi.acronimo}</option>
 			</c:forEach>
 		</select>
-		<input type="text" name="codigo" class="form-control" placeholder="Código"> 
-		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo"> 
-		<input type="text" name="acronimo" class="form-control" placeholder="Acrónimos"> 
-		<input type="text" name="creditos" class="form-control" placeholder="Créditos"> 
-		<input type="number" name="curso" class="form-control" placeholder="Curso">
-		<input type="number" name="semestre" class="form-control"placeholder="Semestre"> 
-		<input type="number" name="grupos" class="form-control" placeholder="Número de grupos">
-	 	<input type="number" name="horasTeoria" class="form-control" placeholder="Horas Teoría"> 
-	 	<input type="number" name="horasPractica" class="form-control" placeholder="Horas Práctica">
-		<input type="number" name="horasLaboratorio" class="form-control" placeholder="Horas Laboratorio"> 
+		<input type="text" name="codigo" class="form-control" placeholder="Código" required> 
+		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo" required> 
+		<input type="text" name="acronimo" class="form-control" placeholder="Acrónimos" required> 
+		<input type="text" name="creditos" class="form-control" placeholder="Créditos" required> 
+		<input type="number" name="curso" class="form-control" placeholder="Curso" required>
+		<input type="number" name="semestre" class="form-control"placeholder="Semestre" required> 
+		<input type="number" name="grupos" class="form-control" placeholder="Número de grupos" required>
+	 	<input type="number" name="horasTeoria" class="form-control" placeholder="Horas Teoría" required> 
+	 	<input type="number" name="horasPractica" class="form-control" placeholder="Horas Práctica" required>
+		<input type="number" name="horasLaboratorio" class="form-control" placeholder="Horas Laboratorio" required> 
 		<select multiple name="b" id='lstBox1' class="form-control">
 			<c:forEach items="${profesor.departamento.profesores}" var="profesori">
 				<option value="${ profesori.email}">${profesori.nombre}</option>

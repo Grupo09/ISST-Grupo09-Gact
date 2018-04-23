@@ -26,7 +26,7 @@ public class FormRespEliminarAsignaturaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		String codigo = req.getParameter("asignatura");
+		String codigo = req.getParameter("codigo");
 		Asignatura asignatura = AsignaturaDAOImplementation.getInstance().readAsignatura(codigo);
 		
 		
