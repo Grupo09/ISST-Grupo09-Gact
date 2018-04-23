@@ -31,7 +31,9 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String planEstudiosCodigo = req.getParameter("planEstudios");
-		String codigo = req.getParameter("codigo");
+		
+		
+		String codigo = req.getParameter("asignatura");
 		String menu = req.getParameter("manera");
 		Asignatura asignatura= AsignaturaDAOImplementation.getInstance().readAsignatura(codigo);
 		System.out.println(menu);
@@ -40,10 +42,12 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 		String nombre = req.getParameter("nombre");
 		String acronimo = req.getParameter("acronimo");
 		String creditos = req.getParameter("creditos");
+		String departamentoCodigo = req.getParameter("departamento");
 
 		System.out.println(req.getParameter("curso")+"/"+req.getParameter("semestre")+"/"+req.getParameter("grupos")+"/"+req.getParameter("horasTeoria")+"/"+req.getParameter("horasPractica")
 		+"/"+req.getParameter("horasLaboratorio")+"/"+req.getParameter("coordinador"));
 		System.out.println("EL PLAN DE ESTUDIOS CODIGO ES "+planEstudiosCodigo);
+		
 		int curso = Integer.parseInt(req.getParameter("curso"));
 		int semestre = Integer.parseInt(req.getParameter("semestre"));
 		int grupos = Integer.parseInt(req.getParameter("grupos"));
@@ -54,11 +58,15 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 
 		Profesor coordinador = ProfesorDAOImplementation.getInstance().readProfesor(coordinadorEmail);
 
-		PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
-		String departamentoCodigo = req.getParameter("departamento");
+		//PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
+		
 		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoCodigo);
-		asignatura.setPlanEstudios(planEstudios);
-		asignatura.setCodigo(codigo);
+		
+		
+		// son dos parametros que no voy a volver a cambiar son fijos desde su creacion
+//		asignatura.setPlanEstudios(planEstudios);
+		
+//		asignatura.setCodigo(codigo);
 		asignatura.setNombre(nombre);
 		asignatura.setAcronimo(acronimo);
 		asignatura.setCreditos(creditos);

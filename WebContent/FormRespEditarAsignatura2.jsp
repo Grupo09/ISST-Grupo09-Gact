@@ -11,8 +11,8 @@
 		
 		<input type="hidden" name="planEstudios" class="form-control" placeholder="Código" value="${planEstudios.codigo}" > 
 		
-		<input type="text" name="codigo" class="form-control" placeholder="Código"  > 
-		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo" " > 
+		<!-- <input type="hidden" name="codigo" class="form-control" placeholder="Código"  >  -->
+		<input type="text" name="nombre" class="form-control" placeholder="Nombre completo" > 
 		<input type="text" name="acronimo" class="form-control" placeholder="Acrónimos"> 
 		<input type="text" name="creditos" class="form-control" placeholder="Créditos"> 
 		<input type="number" name="curso" class="form-control" placeholder="Curso" >
