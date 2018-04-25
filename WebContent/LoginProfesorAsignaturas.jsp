@@ -27,6 +27,7 @@
 			<td><b>Horas Laboratorio</b></td>
 			<td><b>Horas Practica</b></td>
 			<td><b>Horas Teoria</b></td>
+			<td><b>Consultas Coordinador</b></td>
 		</tr>
 		<c:forEach items="${asignatura_list}" var="asignaturai">
 			<tr>
@@ -36,6 +37,15 @@
 						<td>${asignacion.horasLaboratorio}</td>
 						<td>${asignacion.horasPractica}</td>
 						<td>${asignacion.horasTeoria}</td>
+						<td><form action="EmailSendingServlet" method="post">
+								<input type="hidden" name="recipient"
+									value="${asignaturai.coordinador.email}"> <input
+									type="hidden" name="user" value="${profesor.email}"> <input
+									type="hidden" name="subject"
+									value="Notificacion de ${asignaturai.nombre }}">
+								<textarea rows="5" cols="20" name="content"></textarea>
+								<button type="submit">Enviar</button>
+							</form></td>
 					</c:if>
 				</c:forEach>
 
