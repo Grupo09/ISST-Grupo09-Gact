@@ -43,7 +43,7 @@
 									type="hidden" name="user" value="${profesor.email}"> <input
 									type="hidden" name="subject"
 									value="Notificacion de ${asignaturai.nombre }}">
-								<textarea rows="5" cols="20" name="content"></textarea>
+								<textarea rows="1" cols="30" name="content"></textarea>
 								<button type="submit">Enviar</button>
 							</form></td>
 					</c:if>
