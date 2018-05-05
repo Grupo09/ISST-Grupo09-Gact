@@ -56,7 +56,7 @@ public class FormRespEditarAsignatura1Servlet extends HttpServlet {
 		List <Asignacion> listAsignaciones = AsignacionDAOImplementation.getInstance().readAsociaciones();
 
 		List <Profesor> listProfAsignados = new ArrayList<>();
-		List <Profesor > listProfDisponibles = new ArrayList<>();
+		List <Profesor> listProfDisponibles = new ArrayList<>();
 
 		//listProfDisponibles = (List<Profesor>) req.getSession().getAttribute("profesorDepartamento_list");
 		listProfDisponibles.addAll(DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoCodigo).getProfesores());

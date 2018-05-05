@@ -43,11 +43,11 @@ function myFunction() {
 		 
 	      <div class="col-sm-4">   
 	
-		<input  class="form-control" id = "nombre" type="text" name="nombre" class="form-control" placeholder="Nombre completo"> 
+		<input  class="form-control" id = "nombre" type="text" name="nombre" class="form-control" placeholder="Nombre completo" required> 
 		</div>
 		
 	    <div class="col-sm-4">
-		<input  class="form-control" id = "acronimo" type="text" name="acronimo" class="form-control" placeholder="Acrónimo"> 
+		<input  class="form-control" id = "acronimo" type="text" name="acronimo" class="form-control" placeholder="Acrónimo" required> 
 		</div>
 	
       <div class="col-sm-12">   
