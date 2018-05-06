@@ -12,7 +12,7 @@
 		<form action="FormCoordHorasServlet">
 			<tr>
 				<input type="hidden" name="codigo" value="${asignatura.codigo}">
-				<input type="hidden" name="asignacion_id" value="${asignacion.id}">
+	 			<input type="hidden" name="asignacion_id" value="${asignacion.id}">
 				<td>${asignacion.profesor.email}</td>
 				<td><input type="number" name="horasLaboratorio"
 					value="${asignacion.horasLaboratorio}"

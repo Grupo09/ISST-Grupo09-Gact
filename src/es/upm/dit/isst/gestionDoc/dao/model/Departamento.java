@@ -73,5 +73,8 @@ public class Departamento implements Serializable {
 	public void setProfesores(List<Profesor> profesores) {
 		this.profesores = profesores;
 	}
+	public List<Asignatura> getAsignaturas(){
+		return this.asignatura;
+	}
 
 }
