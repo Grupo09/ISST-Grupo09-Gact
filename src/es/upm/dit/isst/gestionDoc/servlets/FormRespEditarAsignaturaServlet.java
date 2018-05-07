@@ -34,7 +34,7 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		String planEstudiosCodigo = req.getParameter("planEstudios");
 		String departamentoCodigo = req.getParameter("departamento");
 		PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
@@ -44,17 +44,21 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 		List<Asignatura> lista2 = new ArrayList<>();
 
 		for (Asignatura a : lista) {
-			if (a.getDepartamentoAsignatura().getCodigo().equals(departamentoCodigo) 
-					&& a.getPlanEstudios().getCodigo().equals(planEstudiosCodigo)) {
+			System.out.println(a.getCodigo());
+
+			if (a.getDepartamentoAsignatura() != null) {
+				if (  a.getDepartamentoAsignatura().getCodigo().equals(departamentoCodigo) 
+						&& a.getPlanEstudios().getCodigo().equals(planEstudiosCodigo)) {
 
 
-				lista2.add(a);
+					lista2.add(a);
 				}
+			}
 
 		}
-//		System.out.println(lista2.size());
-//		System.out.println(" el plan de estudios es "+ planEstudiosCodigo + "el plan de departamento es "+ departamentoCodigo);
-		
+		//		System.out.println(lista2.size());
+		//		System.out.println(" el plan de estudios es "+ planEstudiosCodigo + "el plan de departamento es "+ departamentoCodigo);
+
 
 		req.getSession().setAttribute("planEstudios", planEstudios);
 		req.getSession().setAttribute("departamento", departamento);

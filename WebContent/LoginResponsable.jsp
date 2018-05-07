@@ -62,6 +62,15 @@
 								<li><a href="LoginResponsableServlet?menu=4">Editar
 										Asignatura</a></li>
 							</ul></li>
+		
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Api UPM<span
+								class="caret"></span></a>
+							<ul class="dropdown-menu ">
+								<li><a href="LoginResponsableServlet?menu=7">Departamentos</a></li>
+								<li><a href="LoginResponsableServlet?menu=8">Planes de Estudio</a></li>
+								<li><a href="LoginResponsableServlet?menu=9">Asignaturas</a></li>
+							</ul></li>
 					</ul>
 				</div>
 			</div>
@@ -92,6 +101,10 @@
 							<%@ include file="FormRespEditarAsignatura2.jsp"%>
 						</c:when>
 
+
+<c:when test="${menuResponsable == 9}">
+							<%@ include file="RellenarAsignaturaApi.jsp"%>
+						</c:when>
 
 					</c:choose>
 

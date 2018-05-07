@@ -36,7 +36,7 @@ public class FormRespNuevaAsignaturaServlet extends HttpServlet {
 		String codigo = req.getParameter("codigo");
 		String nombre = req.getParameter("nombre");
 		String acronimo = req.getParameter("acronimo");
-		int creditos = Integer.parseInt(req.getParameter("creditos"));
+		String creditos = req.getParameter("creditos");
 		int curso = Integer.parseInt(req.getParameter("curso"));
 		int semestre = Integer.parseInt(req.getParameter("semestre"));
 		int grupos = Integer.parseInt(req.getParameter("grupos"));
@@ -86,7 +86,7 @@ public class FormRespNuevaAsignaturaServlet extends HttpServlet {
 			   out.println("location='LoginResponsable.jsp';");
 			   out.println("</script>");
 			   
-		} else if (creditos != 3 && creditos != 4.5 && creditos != 6)  {
+		} else if (!creditos.equals("3")&& !creditos.equals("4.5") && !creditos.equals("6"))  {
 			resp.setContentType("text/html;charset=UTF-8");
 			   out.println("<script type=\"text/javascript\">");
 			   out.println("alert('Creditos no validos');");
@@ -110,19 +110,19 @@ public class FormRespNuevaAsignaturaServlet extends HttpServlet {
 			   out.println("alert('Numero de grupos debe ser de 1 a 5');");
 			   out.println("location='LoginResponsable.jsp';");
 			   out.println("</script>");
-		} else if (creditos == 3 && (horasTeoria + horasPractica + horasLaboratorio) != 60)  {
+		} else if (creditos.equals("3") && (horasTeoria + horasPractica + horasLaboratorio) != 60)  {
 			resp.setContentType("text/html;charset=UTF-8");
 			   out.println("<script type=\"text/javascript\">");
 			   out.println("alert('Numero de horas totales para 3 creditos debe sumar 60');");
 			   out.println("location='LoginResponsable.jsp';");
 			   out.println("</script>");
-		} else if (creditos == 4.5 && (horasTeoria + horasPractica + horasLaboratorio) != 90)  {
+		} else if (creditos.equals("4.5")&& (horasTeoria + horasPractica + horasLaboratorio) != 90)  {
 			resp.setContentType("text/html;charset=UTF-8");
 			   out.println("<script type=\"text/javascript\">");
 			   out.println("alert('Numero de horas totales para 4.5 creditos debe sumar 90');");
 			   out.println("location='LoginResponsable.jsp';");
 			   out.println("</script>");
-		} else if (creditos == 6 && (horasTeoria + horasPractica + horasLaboratorio) != 120)  {
+		} else if (creditos.equals("6") && (horasTeoria + horasPractica + horasLaboratorio) != 120)  {
 			resp.setContentType("text/html;charset=UTF-8");
 			   out.println("<script type=\"text/javascript\">");
 			   out.println("alert('Numero de horas totales para 4.5 creditos debe sumar 90');");
