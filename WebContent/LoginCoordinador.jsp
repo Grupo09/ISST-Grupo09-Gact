@@ -63,7 +63,7 @@
 
 					<c:choose>
 						<c:when test="${menuCoordinador == 0}">
-							<%@ include file="LoginProfesorPerfil.jsp"%>
+							<%@ include file="LoginCoordinadorPerfil.jsp"%>
 						</c:when>
 						<c:when test="${menuCoordinador == 1}">
 							<%@ include file="FormCoordAsignaturas.jsp"%>

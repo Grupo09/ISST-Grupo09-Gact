@@ -70,7 +70,7 @@
 
 					<c:choose>
 						<c:when test="${menuResponsable == 0}">
-							<%@ include file="LoginProfesorPerfil.jsp"%>
+							<%@ include file="LoginResponsablePerfil.jsp"%>
 						</c:when>
 						<c:when test="${menuResponsable == 1}">
 							<%@ include file="FormRespNuevoPlan.jsp"%>
