@@ -40,7 +40,7 @@ public class FormRespEditarAsignatura2Servlet extends HttpServlet {
 		// Obtengo los nuevos parametros
 		String nombre = req.getParameter("nombre");
 		String acronimo = req.getParameter("acronimo");
-		String creditos = req.getParameter("creditos");
+		int creditos = Integer.parseInt(req.getParameter("creditos"));
 
 		System.out.println(req.getParameter("curso")+"/"+req.getParameter("semestre")+"/"+req.getParameter("grupos")+"/"+req.getParameter("horasTeoria")+"/"+req.getParameter("horasPractica")
 		+"/"+req.getParameter("horasLaboratorio")+"/"+req.getParameter("coordinador"));

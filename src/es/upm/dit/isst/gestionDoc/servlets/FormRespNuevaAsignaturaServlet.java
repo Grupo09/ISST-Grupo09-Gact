@@ -1,6 +1,7 @@
 package es.upm.dit.isst.gestionDoc.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class FormRespNuevaAsignaturaServlet extends HttpServlet {
 		String codigo = req.getParameter("codigo");
 		String nombre = req.getParameter("nombre");
 		String acronimo = req.getParameter("acronimo");
-		String creditos = req.getParameter("creditos");
+		int creditos = Integer.parseInt(req.getParameter("creditos"));
 		int curso = Integer.parseInt(req.getParameter("curso"));
 		int semestre = Integer.parseInt(req.getParameter("semestre"));
 		int grupos = Integer.parseInt(req.getParameter("grupos"));
@@ -48,36 +49,7 @@ public class FormRespNuevaAsignaturaServlet extends HttpServlet {
 		PlanEstudios planEstudios = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
 		String departamentoCodigo = req.getParameter("departamento");
 		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoCodigo);
-<<<<<<< HEAD
-		asignatura.setPlanEstudios(planEstudios);
-		asignatura.setCodigo(codigo);
-		asignatura.setNombre(nombre);
-		asignatura.setAcronimo(acronimo);
-		asignatura.setCreditos(creditos);
-		asignatura.setCurso(curso);
-		asignatura.setSemestre(semestre);
-		asignatura.setGrupos(grupos);
-		asignatura.setHorasTeoria(horasTeoria);
-		asignatura.setHorasPractica(horasPractica);
-		asignatura.setHorasLaboratorio(horasLaboratorio);
-		asignatura.setDepartamentoAsignatura(departamento);
-		asignatura.setCoordinador(coordinador);
-		AsignaturaDAOImplementation.getInstance().createAsignatura(asignatura);
-		  
-		String [] profesoresEmail = req.getParameterValues("ProfesoresSeleccionados");
-		//System.out.println(profesoresEmail.length);
-		if (profesoresEmail != null) {
-			for(int i = 0; i<profesoresEmail.length; i++) {
-				Asignacion asignacion = new Asignacion();
-				Profesor profesor = ProfesorDAOImplementation.getInstance().readProfesor(profesoresEmail[i]);
-				asignacion.setProfesor(profesor);
-				asignacion.setHorasLaboratorio(0);
-				asignacion.setHorasPractica(0);
-				asignacion.setHorasTeoria(0);
-				asignacion.setAsignatura(asignatura);
-				AsignacionDAOImplementation.getInstance().createAsignacion(asignacion);
-=======
-		
+
 		
 		int repetidoCodigo = 0;
 		int repetidoAcronimo = 0;
@@ -189,13 +161,14 @@ public class FormRespNuevaAsignaturaServlet extends HttpServlet {
 					asignacion.setAsignatura(asignatura);
 					AsignacionDAOImplementation.getInstance().createAsignacion(asignacion);
 				}
->>>>>>> a1e892c...  funciona
+
 			}
+			Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
+			req.getSession().setAttribute("asignaturaCoordinador_list", AsignaturaDAOImplementation.getInstance().readAsignaturaCoordinador(profesor));
+			req.getSession().setAttribute("menuResponsable", 0);
+			resp.sendRedirect(req.getContextPath()+"/LoginResponsable.jsp");
 		}
-		Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
-		req.getSession().setAttribute("asignaturaCoordinador_list", AsignaturaDAOImplementation.getInstance().readAsignaturaCoordinador(profesor));
-		req.getSession().setAttribute("menuResponsable", 0);
-		resp.sendRedirect(req.getContextPath()+"/LoginResponsable.jsp");
+		
 	}
 	
 	

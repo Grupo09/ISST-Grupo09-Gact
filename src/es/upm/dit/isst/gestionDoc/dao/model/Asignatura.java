@@ -21,7 +21,7 @@ public class Asignatura implements Serializable {
 	private String codigo;
 	private String nombre;
 	private String acronimo;
-	private String creditos;
+	private int creditos;
 	private int curso;
 	private int semestre;
 	private int grupos;
@@ -67,11 +67,11 @@ public class Asignatura implements Serializable {
 		this.acronimo = acronimo;
 	}
 
-	public String getCreditos() {
+	public int getCreditos() {
 		return creditos;
 	}
 
-	public void setCreditos(String creditos) {
+	public void setCreditos(int creditos) {
 		this.creditos = creditos;
 	}
 
