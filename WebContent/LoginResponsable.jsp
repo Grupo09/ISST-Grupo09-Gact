@@ -102,7 +102,7 @@
 						</c:when>
 
 
-<c:when test="${menuResponsable == 9}">
+						<c:when test="${menuResponsable == 9}">
 							<%@ include file="RellenarAsignaturaApi.jsp"%>
 						</c:when>
 

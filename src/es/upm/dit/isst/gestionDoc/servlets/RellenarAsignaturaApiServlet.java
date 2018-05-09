@@ -34,17 +34,23 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String planEstudiosCodigo = req.getParameter("planEstudios");
+		String departamentoCodigo = req.getParameter("departamento");
+		
+		
 
 
 		PlanEstudios plan = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
 
 		Asignatura asignatura = new Asignatura();
 		AsignaturaDAOImplementation asigna = AsignaturaDAOImplementation.getInstance();
+		
+		System.out.println("/"+departamentoCodigo+"/"+planEstudiosCodigo);
 
 
 		try {
 
-			URL url = new URL("https://www.upm.es/wapi_upm/academico/comun/index.upm/v2/plan.json/"
+			URL url = new URL("https://www.upm.es/wapi_upm/academico/comun/index.upm/v2/departamento.json/"
+					+ departamentoCodigo+"/"
 					+ planEstudiosCodigo+
 					"/asignaturas");
 
@@ -131,8 +137,10 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 
 								while (keysArrDepar.hasNext()) {
 									String keyArrDepar = (String) keysArrDepar.next();
+									
+									System.out.println(keyArrDepar);
 
-									if ( keysArrDepar.equals("codigo_departamento")) {
+									if ( keyArrDepar.equals("codigo_departamento")) {
 										asignatura
 										.setDepartamentoAsignatura
 										(DepartamentoDAOImplementation
