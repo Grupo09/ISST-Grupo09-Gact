@@ -31,6 +31,19 @@
 			<h3>CREAR DEPARTAMENTO</h3>
 		</div>
 		<%@ include file="FormNuevoDepartamento.jsp"%>
+	
+
+			<div class="col-sm-12">
+				<a href="FormNuevoDepartamentoServlet?menu=1">Rellenar Departamento </a>
+				
+				
+			</div>
+			<div class="col-sm-12">
+				<a href="FormRespNuevoPlanServlet?menu=1">Rellenar Planes de Estudio </a>
+				
+			</div>
+	
+
 		<div class="page-header">
 			<h3>DEPARTAMENTOS</h3>
 		</div>

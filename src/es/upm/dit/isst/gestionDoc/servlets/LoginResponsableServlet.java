@@ -37,6 +37,11 @@ import es.upm.dit.isst.gestionDoc.dao.model.Profesor;
 @WebServlet("/LoginResponsableServlet")
 public class LoginResponsableServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String menu = req.getParameter("menu");
