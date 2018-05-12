@@ -46,7 +46,7 @@ public class FormRespEditarAsignaturaServlet extends HttpServlet {
 		for (Asignatura a : lista) {
 			System.out.println(a.getCodigo());
 
-			if (a.getDepartamentoAsignatura() != null) {
+			if (a.getDepartamentoAsignatura() != null && a.getPlanEstudios() != null) {
 				if (  a.getDepartamentoAsignatura().getCodigo().equals(departamentoCodigo) 
 						&& a.getPlanEstudios().getCodigo().equals(planEstudiosCodigo)) {
 
