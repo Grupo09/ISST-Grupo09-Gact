@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="./style/style.css">
+<link rel="stylesheet" type="text/css" href="./style/style_profesor.css">
 <!-- Bootstrap, Jquery -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
 <title>Aplicación Gestión Docente</title>
 </head>
 <body>
-	<div id="contenedor">
+	<div class="contenedor">
 		<ul class="nav nav-tabs nav-users">
 			<li class="nav-item"><a href="LogoutServlet">Salir</a></li>
 			<li class="nav-item active"><a class="nav-link"
@@ -37,7 +37,7 @@
 			</c:if>
 		</ul>
 	</div>
-	<img src="./imgs/fondo.jpg" style="width: 100%; height: 200px;">
+	<img class="center" src="./imgs/clase.jpg" style="width: 100%%; height: 200px;">
 	<div class="container">
 		<div class="row affix-row">
 			<div class="col-sm-3 col-md-2" style="padding-left: 0px;">

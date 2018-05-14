@@ -1,0 +1,91 @@
+html,body{
+	font: 18px/1.5em Arial,Helvetica,sans-serif !important;
+	background: linear-gradient(-45deg, rgba(0,0,255,0.3), rgba(0,0,255,0.3));
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.container{
+	width: auto !important;
+}
+
+
+.nav-users{
+	border: none !important;
+	
+}
+
+.nav-users>li{
+	float: right !important;
+
+}
+
+.nav-users>li>a{
+	padding: 0px 5px !important;
+
+}
+
+
+.nav-users>li.active>a, .nav-users>li.active>a:focus, .nav-users>li.active>a:hover {   
+    border: none !important;
+ 
+}
+
+.nav-lateralMenu {
+	float: none !important;
+}
+
+.nav-lateralMenu > li{
+	float: none !important;
+}
+
+.navbar-collapse{
+	padding-right: 0px !important; 
+    padding-left: 0px !important;
+}
+
+.dropdown-menu>.active>a{
+	
+	background-color: #2AD0FF !important;
+}
+
+.row {
+	margin-right: 0px !important;
+}
+
+//listas intercambiables
+
+.subject-info-box-1,
+.subject-info-box-2 {
+    float: left;
+    width: 45%;
+    
+    select {
+        height: 200px;
+        padding: 0;
+
+        option {
+            padding: 4px 10px 4px 10px;
+        }
+
+        option:hover {
+            background: #E0FFFF;
+        }
+    }
+}
+
+.subject-info-arrows {
+    float: left;
+    width: 10%;
+
+    input {
+        width: 70%;
+        margin-bottom: 5px;
+    }
+}
+
+

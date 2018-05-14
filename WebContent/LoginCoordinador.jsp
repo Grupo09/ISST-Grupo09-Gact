@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="./style/style.css">
+<link rel="stylesheet" type="text/css" href="./style/style_coordinador.css">
 <!-- Bootstrap, Jquery -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,7 +37,7 @@
 			</c:if>
 		</ul>
 	</div>
-	<img src="./imgs/fondo.jpg" style="width: 100%; height: 200px;">
+	<img src="./imgs/coordinador.png" style="width: 100%; height: 200px;">
 	<div class="container">
 		<div class="row affix-row">
 			<div class="col-sm-3 col-md-2" style="padding-left: 0px;">
