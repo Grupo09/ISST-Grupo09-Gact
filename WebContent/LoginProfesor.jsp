@@ -40,7 +40,7 @@
 	<img class="center" src="./imgs/clase.jpg" style="width: 100%%; height: 200px;">
 	<div class="container">
 		<div class="row affix-row">
-			<div class="col-sm-3 col-md-2" style="padding-left: 0px;">
+			<div class="col-sm-4 col-md-2" style="padding-left: 0px;">
 				<div class="affix-sidebar sidebar-nav navbar navbar-default"
 					role="navigation">
 					<ul class="nav  navbar-nav nav-lateralMenu">
@@ -50,8 +50,8 @@
 					</ul>
 				</div>
 			</div>
-			<div class="col-sm-9 col-md-10 affix-content">
-				<div class="container">
+			<div class="col-sm-8 col-md-10 affix-content">
+				<div class="container2">
 					<c:choose>
 						<c:when test="${menuProfesor == 0}">
 							<%@ include file="LoginProfesorPerfil.jsp"%>

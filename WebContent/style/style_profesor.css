@@ -1,6 +1,12 @@
 html,body{
 	font: 18px/1.5em Arial,Helvetica,sans-serif !important;
-	background: linear-gradient(-45deg, rgba(204,204,204,1), rgba(194,194,194,0));
+	height:100%;
+	background-color: #ccffff;
+}
+body{
+	height:100%;
+	background-color: #ccffff;
+
 }
 .center {
     display: block;
@@ -10,7 +16,14 @@ html,body{
 }
 
 .container{
-	width: auto !important;
+	width: 100% !important;
+	background-color: #ccffff;
+	height:100%;
+	
+}
+container2{
+	width: 100% !important;
+	
 }
 
 
@@ -37,6 +50,7 @@ html,body{
 
 .nav-lateralMenu {
 	float: none !important;
+	background-color: blue;
 }
 
 .nav-lateralMenu > li{
@@ -50,7 +64,8 @@ html,body{
 
 .dropdown-menu>.active>a{
 	color: blue !important;
-	background-color: #e7e7e7 !important;
+	background-color: blue !important;
+	width: 90%;
 }
 
 .row {
@@ -80,7 +95,7 @@ html,body{
 
 .subject-info-arrows {
     float: left;
-    width: 10%;
+    width: 30%;
 
     input {
         width: 70%;
