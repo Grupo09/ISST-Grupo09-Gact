@@ -1,6 +1,6 @@
 <form action="FormRespNuevaAsignaturaServlet">
 
-	<div>
+	<div class="col-sm-4">
 		<h5>Plan de Estudios</h5>
 		<input type="hidden" name="departamento"
 			value="${ profesor.departamento.codigo}"> <select
@@ -11,57 +11,57 @@
 			</c:forEach>
 		</select>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Código</h5>
 		<input type="text" name="codigo" class="form-control"
 			placeholder="Código" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Nombre completo</h5>
 		<input type="text" name="nombre" class="form-control"
 			placeholder="Nombre completo" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Acorónimo</h5>
 		<input type="text" name="acronimo" class="form-control"
 			placeholder="Acrónimos" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Créditos</h5>
 		<input type="text" name="creditos" class="form-control"
 			placeholder="Créditos" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Curso</h5>
 		<input type="number" name="curso" class="form-control"
 			placeholder="Curso" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Semestre</h5>
 		<input type="number" name="semestre" class="form-control"
 			placeholder="Semestre" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Número de grupos</h5>
 		<input type="number" name="grupos" class="form-control"
 			placeholder="Número de grupos" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Horas de Teoría</h5>
 		<input type="number" name="horasTeoria" class="form-control"
 			placeholder="Horas Teoría" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Horas de Práctica</h5>
 		<input type="number" name="horasPractica" class="form-control"
 			placeholder="Horas Práctica" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Horas de Laboratorio</h5>
 		<input type="number" name="horasLaboratorio" class="form-control"
 			placeholder="Horas Laboratorio" required>
 	</div>
-	<div>
+	<div class="col-sm-12">
 		<label>Profesores</label>
 		<h5>Profesores que se pueden añadir</h5>
 		<select multiple name="b" id='lstBox1' class="form-control">
@@ -80,7 +80,7 @@
 		</select>
 	</div>
 	<div>
-		<h5>Coordinador</h5>
+		
 
 		<select name="coordinador" id='coordinador' class="form-control">
 			<option value="" selected disabled>Elija Coordinador</option>

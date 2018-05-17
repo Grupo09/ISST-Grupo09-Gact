@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="./style/style_profesor.css">
+<link rel="stylesheet" type="text/css" href="./style/style.css">
 <!-- Bootstrap, Jquery -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,11 +21,11 @@
 <title>Aplicación Gestión Docente</title>
 </head>
 <body>
-	<div class="contenedor">
+	<div class="contenedor barraUsuarios">
 		<ul class="nav nav-tabs nav-users">
 			<li class="nav-item"><a href="LogoutServlet">Salir</a></li>
-			<li class="nav-item active"><a class="nav-link"
-				href="LogoutServlet">PROFESOR</a></li>
+			<li class="nav-item active disable"><a class="nav-link"
+				href="LoginProfesor">PROFESOR</a></li>
 			<c:if
 				test="${ profesor.email.equals(profesor.departamento.responsable.email)}">
 				<li class="nav-item"><a class="nav-link"
@@ -36,21 +36,22 @@
 					href="LoginCoordinadorServlet">COORDINADOR</a></li>
 			</c:if>
 		</ul>
-	</div>
-	<img class="center" src="./imgs/clase.jpg" style="width: 100%%; height: 200px;">
-	<div class="container">
-		<div class="row affix-row">
-			<div class="col-sm-4 col-md-2" style="padding-left: 0px;">
-				<div class="affix-sidebar sidebar-nav navbar navbar-default"
-					role="navigation">
-					<ul class="nav  navbar-nav nav-lateralMenu">
-						<li class><a href="LoginProfesorServlet?menu=0">Perfil</a></li>
-						<li class><a href="LoginProfesorServlet?menu=1">Asignaturas
+	</div>	
+	
+	<img class="center" src="./imgs/etsit.png" style="">
+	
+	<div class="barraAcciones">
+					<ul class="nav nav-pills nav-fill justify-content-center">
+						<li class="nav-item"><a class="nav-link" href="LoginProfesorServlet?menu=0">Perfil</a></li>
+						<li class="nav-item"><a class="nav-link" href="LoginProfesorServlet?menu=1">Asignaturas
 								impartidas</a></li>
 					</ul>
 				</div>
-			</div>
-			<div class="col-sm-8 col-md-10 affix-content">
+	
+
+				
+				
+			
 				<div class="container2">
 					<c:choose>
 						<c:when test="${menuProfesor == 0}">
@@ -62,9 +63,9 @@
 					</c:choose>
 
 				</div>
-			</div>
-		</div>
-	</div>
+			
+		
+	
 
 </body>
 </html>

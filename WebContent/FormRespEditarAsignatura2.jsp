@@ -7,55 +7,55 @@
 		name="planEstudios" class="form-control"
 		value="${planEstudios.codigo}"> <input type="hidden"
 		name="codigo" class="form-control" value="${ asignatura.codigo}">
-	<div>
+	<div class="col-sm-4">
 		<h5>Nombre completo</h5>
 		<input type="text" name="nombre" class="form-control"
 			value="${ asignatura.nombre}" placeholder="Nombre completo" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Acorónimo</h5>
 		<input type="text" name="acronimo" class="form-control"
 			value="${ asignatura.acronimo}" placeholder="Acrónimos" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Créditos</h5>
 		<input type="text" name="creditos" class="form-control"
 			value="${ asignatura.creditos}" placeholder="Créditos" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Curso</h5>
 		<input type="number" name="curso" class="form-control"
 			value="${ asignatura.curso}" placeholder="Curso" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Semestre</h5>
 		<input type="number" name="semestre" class="form-control"
 			value="${ asignatura.semestre}" placeholder="Semestre" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Número de grupos</h5>
 		<input type="number" name="grupos" class="form-control"
 			value="${ asignatura.grupos}" placeholder="Número de grupos" required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Horas de Teoría</h5>
 		<input type="number" name="horasTeoria" class="form-control"
 			value="${ asignatura.horasTeoria}" placeholder="Horas Teoría"
 			required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Horas de Práctica</h5>
 		<input type="number" name="horasPractica" class="form-control"
 			value="${ asignatura.horasPractica}" placeholder="Horas Práctica"
 			required>
 	</div>
-	<div>
+	<div class="col-sm-4">
 		<h5>Horas de Laboratorio</h5>
 		<input type="number" name="horasLaboratorio" class="form-control"
 			value="${ asignatura.horasLaboratorio}"
 			placeholder="Horas Laboratorio" required>
 	</div>
-	<div>
+	<div class="col-sm-12">
 		<label>Profesores</label>
 		<h5>Profesores que se pueden añadir</h5>
 		<select multiple name="b" id='lstBox1' class="form-control">
@@ -79,7 +79,7 @@
 			</c:forEach>
 		</select>
 	</div>
-	<div>
+	<div class="col-sm-12">
 		<h5>Coordinador</h5>
 
 		<select name="coordinador" id='coordinador' class="form-control">

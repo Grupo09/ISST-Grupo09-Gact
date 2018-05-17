@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="./style/style_coordinador.css">
+<link rel="stylesheet" type="text/css" href="./style/style.css">
 <!-- Bootstrap, Jquery -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,44 +22,43 @@
 <title>Aplicación Gestión Docente</title>
 </head>
 <body>
-	<div id="contenedor">
+	<div class="contenedor barraUsuarios">
 		<ul class="nav nav-tabs nav-users">
 			<li class="nav-item"><a href="LogoutServlet">Salir</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="LoginProfesorServlet">PROFESOR</a></li>
 			<c:if
 				test="${ profesor.email.equals(profesor.departamento.responsable.email)}">
-				<li class="nav-item"><a class="nav-link" href="LoginResponsableServlet">RESPONSABLE</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="LoginResponsableServlet">RESPONSABLE</a></li>
 			</c:if>
 			<c:if test="${ fn:length(asignaturaCoordinador_list)> 0}">
-				<li class="nav-item active "><a class="nav-link"
+				<li class="nav-item active disable"><a class="nav-link"
 					href="LoginCoordinadorServlet">COORDINADOR</a></li>
 			</c:if>
 		</ul>
-	</div>
-	<img src="./imgs/coordinador.png" style="width: 100%; height: 200px;">
-	<div class="container">
-		<div class="row affix-row">
-			<div class="col-sm-3 col-md-2" style="padding-left: 0px;">
-				<div class="affix-sidebar sidebar-nav navbar navbar-default"
-					role="navigation">
-					<ul class="nav  navbar-nav nav-lateralMenu">
-						<li class><a href="LoginCoordinadorServlet?menu=0">Perfil</a></li>
+	</div>	
+	<img class="center" src="./imgs/etsit.png" style="">
+	
+	<div class="barraAcciones">
+					<ul class="nav nav-pills nav-fill justify-content-center">
+						<li class="nav-item"><a class="nav-link" href="LoginCoordinadorServlet?menu=0">Perfil</a></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">Asignaturas<span
 								class="caret"></span></a>
-							<ul class="dropdown-menu ">
+							<ul class="dropdown-menu li">
 							<c:forEach items="${asignatura_list}" var="asignaturai">
 								<c:if test="${asignaturai.coordinador.email.equals(profesor.email)}">
-									<li><a href="LoginCoordinadorServlet?menu=1&codigo=${asignaturai.codigo}">${asignaturai.acronimo}</a></li>
+									<li class="li"><a href="LoginCoordinadorServlet?menu=1&codigo=${asignaturai.codigo}">${asignaturai.acronimo}</a></li>
 								</c:if>
 							</c:forEach>
 							</ul></li>
 					</ul>
 				</div>
-			</div>
-			<div class="col-sm-9 col-md-10 affix-content">
-				<div class="container">
+	
+	
+			
+				<div class="container2">
 
 					<c:choose>
 						<c:when test="${menuCoordinador == 0}">
@@ -71,7 +70,6 @@
 					</c:choose>
 
 				</div>
-			</div>
 		</div>
 	</div>
 
