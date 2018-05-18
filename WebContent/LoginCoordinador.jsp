@@ -47,7 +47,7 @@
 							data-toggle="dropdown" href="#">Asignaturas<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu li">
-							<c:forEach items="${asignatura_list}" var="asignaturai">
+							<c:forEach items="${asignaturas_list}" var="asignaturai">
 								<c:if test="${asignaturai.coordinador.email.equals(profesor.email)}">
 									<li class="li"><a href="LoginCoordinadorServlet?menu=1&codigo=${asignaturai.codigo}">${asignaturai.acronimo}</a></li>
 								</c:if>
