@@ -15,8 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 import es.upm.dit.isst.gestionDoc.dao.AsignacionDAOImplementation;
 import es.upm.dit.isst.gestionDoc.dao.AsignaturaDAOImplementation;
@@ -65,9 +69,33 @@ public class ResponsableChartServlet extends HttpServlet {
   
   List<Asignatura> asignaturas = departamento.getAsignaturas();
   for(Asignatura a : asignaturas) {
+	  
  	 List<Asignacion>  asignaciones = a.getAsignaciones();
- 	 	  
- 		  dataset.addValue(asignaciones.size(),a.getAcronimo() , a.getNombre());
+ 	 
+ 	  double horasPracticas = 0;
+ 	  double horasLaboratorio =0;
+ 	  double horasTeoria =0;
+ 	  double horasTotales = a.getHorasLaboratorio()+a.getHorasPractica()+a.getHorasTeoria();
+ 	  
+ 	  for(Asignacion as : asignaciones) {
+ 		  horasPracticas += as.getHorasPractica();
+ 		  horasLaboratorio += as.getHorasLaboratorio();
+ 		  horasTeoria += as.getHorasTeoria();
+
+ 		}
+ 	  
+ 
+
+
+ 	  
+ 	 double porcentaje = 100*((horasPracticas+horasLaboratorio+horasTeoria)/horasTotales);
+ 	  System.out.println("adios");
+
+
+ 	 dataset.addValue(porcentaje, a.getAcronimo(), a.getNombre());
+ 	 
+ 	
+ 		  
 
  	 
   }
@@ -75,10 +103,19 @@ public class ResponsableChartServlet extends HttpServlet {
   
   String text = "Profesores en el "+departamento.getNombre();
 
-  JFreeChart chart = ChartFactory.createBarChart(text, "",
-    "Profesores", dataset, PlotOrientation.VERTICAL, true, true, false);
+  JFreeChart chart = ChartFactory.createBarChart(text, "Asignaturas", "Horas asignadas", dataset, PlotOrientation.VERTICAL, true, true, false);
  
-  chart.setBackgroundPaint(Color.CYAN);
+		  chart.getPlot().setBackgroundPaint(Color.WHITE);
+		  chart.getPlot().setOutlinePaint(Color.WHITE);
+		  chart.getLegend().setBorder(0,0,0,0);
+		  chart.getCategoryPlot().getRangeAxis().setRange(0,100);
+		  chart.getLegend().visible=false;
+		
+		  /*
+		  PiePlot plot = (PiePlot)chart.getPlot();
+		  PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator("{1}");
+		  plot.setLabelGenerator(labelGenerator);
+		  */
 
   RenderedImage chartImage = chart.createBufferedImage(300, 300);
   ImageIO.write(chartImage, "png", os);

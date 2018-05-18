@@ -1,5 +1,6 @@
 package es.upm.dit.isst.gestionDoc.servlets;
 
+import java.awt.Color;
 import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.util.List;
@@ -14,8 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 import es.upm.dit.isst.gestionDoc.dao.AsignacionDAOImplementation;
 import es.upm.dit.isst.gestionDoc.dao.AsignaturaDAOImplementation;
@@ -47,11 +52,7 @@ public class ChartServlet extends HttpServlet {
  protected void doGet(HttpServletRequest request,
    HttpServletResponse response) throws ServletException, IOException {
 
-	 
- String email = request.getParameter("coord");
- Profesor coordinador = ProfesorDAOImplementation.getInstance().readProfesor(email);
- List<Asignatura> asignaturas  = AsignaturaDAOImplementation.getInstance().readAsignaturaCoordinador(coordinador);
- Asignatura asig = asignaturas.get(0);
+ Asignatura asig = AsignaturaDAOImplementation.getInstance().readAsignatura(request.getParameter("asig"));
  
  List<Asignacion> asignacion = asig.getAsignaciones();
  
@@ -62,20 +63,40 @@ public class ChartServlet extends HttpServlet {
   response.setContentType("image/png");
 
   ServletOutputStream os = response.getOutputStream();
+  
+  DefaultPieDataset dataset = new DefaultPieDataset();
 
-  DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+  //DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+  
+  int horasPracticas = 0;
+  int horasLaboratorio =0;
+  int horasTeoria =0;
+  int horasTotales = asig.getHorasLaboratorio()+asig.getHorasPractica()+asig.getHorasTeoria();
   
   for(Asignacion a : asignacion) {
-	  dataset.addValue(a.getHorasPractica(),"Practica" , a.getProfesor().getNombre());
-	  dataset.addValue(a.getHorasLaboratorio(),"Laboratorio" , a.getProfesor().getNombre());
-	  dataset.addValue(a.getHorasTeoria(),"Teoria" , a.getProfesor().getNombre());
+	  horasPracticas += a.getHorasPractica();
+	  horasLaboratorio += a.getHorasLaboratorio();
+	  horasTeoria += a.getHorasTeoria();
 
 	}
   
-  String text = "Horas totales de "+asig.getAcronimo();
+  dataset.setValue("Sin asignar", horasTotales-horasTeoria-horasLaboratorio-horasPracticas);
+  dataset.setValue("Laboratorio", horasLaboratorio);
+  dataset.setValue("Practicas", horasPracticas);
+  dataset.setValue("Teoria", horasTeoria);
+  
+  
 
-  JFreeChart chart = ChartFactory.createBarChart(text, "",
-    "Value", dataset, PlotOrientation.VERTICAL, true, true, false);
+  
+
+  JFreeChart chart = ChartFactory.createPieChart("Asignación de horas", dataset, true, true, false);
+  chart.getPlot().setBackgroundPaint(Color.WHITE);
+  chart.getPlot().setOutlinePaint(Color.WHITE);
+  chart.getLegend().setBorder(0,0,0,0);
+  
+  PiePlot plot = (PiePlot)chart.getPlot();
+  PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator("{2}");
+  plot.setLabelGenerator(labelGenerator);
 
   RenderedImage chartImage = chart.createBufferedImage(300, 300);
   ImageIO.write(chartImage, "png", os);

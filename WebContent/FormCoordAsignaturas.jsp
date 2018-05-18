@@ -34,4 +34,8 @@
 		<td><b>${horasTeoria}/${asignatura.horasTeoria}</b></td>
 	</tr>
 </table>
+<div style="text-align:center">
+<img src="/sprint2/ChartServlet?asig=${asignatura.codigo}" />
+</div>
+
 
