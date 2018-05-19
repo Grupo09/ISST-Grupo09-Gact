@@ -65,8 +65,6 @@
 							data-toggle="dropdown" href="#">Api UPM<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu li ">
-								<li class="li"><a href="LoginResponsableServlet?menu=7">Departamentos</a></li>
-								<li class="li"><a href="LoginResponsableServlet?menu=8">Planes de Estudio</a></li>
 								<li class="li"><a href="LoginResponsableServlet?menu=9">Asignaturas</a></li>
 							</ul></li>
 					</ul>

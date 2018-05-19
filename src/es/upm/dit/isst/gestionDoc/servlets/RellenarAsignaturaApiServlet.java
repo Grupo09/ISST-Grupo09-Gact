@@ -3,6 +3,7 @@ package es.upm.dit.isst.gestionDoc.servlets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -35,15 +36,16 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 
 		String planEstudiosCodigo = req.getParameter("planEstudios");
 		String departamentoCodigo = req.getParameter("departamento");
-		
-		
+		boolean javot = false;
+
+
 
 
 		PlanEstudios plan = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
 
 		Asignatura asignatura = new Asignatura();
 		AsignaturaDAOImplementation asigna = AsignaturaDAOImplementation.getInstance();
-		
+
 		System.out.println("/"+departamentoCodigo+"/"+planEstudiosCodigo);
 
 
@@ -59,8 +61,18 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 			conn.setRequestProperty("Accept", "application/json");
 
 			if (conn.getResponseCode()!= 200) {
-				throw new RuntimeException("Failed : HTTP error code : "
-						+ conn.getResponseCode());
+				//				throw new RuntimeException("Failed : HTTP error code : "
+				//						+ conn.getResponseCode());
+				
+				resp.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = resp.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Javot lavate la boca');");
+				out.println("location='LoginResponsablePerfil.jsp';");
+				out.println("</script>");
+
+
+
 			}
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -72,6 +84,12 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 
 
 				System.out.println(output);
+				
+				
+				//Salida de la lectura si el JSON que me llega está vacio.
+				if (output.equals("[]")) {
+					break;
+				}
 
 				JSONObject json1 = new JSONObject(output.trim());
 
@@ -99,13 +117,14 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 						if ( key.equals("nombre")) {
 
 							//Metodo para obtner un acronimo
-							String acronimo="";
-							String arr [] = prueba.getString(key).split(("\\s+"));
-
-							for (String s : arr) {
-								acronimo=acronimo + s.substring(0,1);
-
-							}
+//							String acronimo="";
+//							String arr [] = prueba.getString(key).split(("\\s+"));
+//
+//							for (String s : arr) {
+//								acronimo=acronimo + s.substring(0,1);
+//
+							String acronimo=prueba.getString(key).substring(0, 4);
+					
 
 							asignatura.setAcronimo(acronimo);
 						}
@@ -137,7 +156,7 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 
 								while (keysArrDepar.hasNext()) {
 									String keyArrDepar = (String) keysArrDepar.next();
-									
+
 									System.out.println(keyArrDepar);
 
 									if ( keyArrDepar.equals("codigo_departamento")) {
@@ -266,6 +285,7 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 
 		req.getSession().setAttribute("menuResponsable", 0);
 		resp.sendRedirect(req.getContextPath()+"/LoginResponsable.jsp");

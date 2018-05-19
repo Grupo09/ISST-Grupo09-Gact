@@ -100,15 +100,9 @@ public class FormNuevoDepartamentoServlet extends HttpServlet {
 						if ( key.equals("nombre")) {
 
 							//Metodo para obtner un acronimo
-							String acronimo="";
-							String arr [] = prueba.getString(key).split(("\\s+"));
 
-							for (String s : arr) {
-								acronimo=acronimo + s.substring(0,1);
-
-
-							}
-							System.out.println(acronimo);
+							String acronimo=prueba.getString(key).substring(0, 4);
+					
 							departamento.setAcronimo(acronimo);
 						}
 
