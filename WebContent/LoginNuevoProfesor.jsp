@@ -21,6 +21,11 @@
 <title>Aplicación Gestión Docente</title>
 </head>
 <body>
+<div id="contenedor">
+		<ul class="nav nav-tabs nav-users loginsecretaria">
+			<li class="nav-item "><a href="LogoutServlet">Salir</a></li>
+		</ul>
+	</div>
 	<div class="container">
 		<div class="page-header">
 			<h3>REGISTRAR NUEVO PROFESOR</h3>

@@ -22,8 +22,8 @@
 </head>
 <body>
 	<div id="contenedor">
-		<ul class="nav nav-tabs nav-users">
-			<li class="nav-item"><a href="LogoutServlet">Salir</a></li>
+		<ul class="nav nav-tabs nav-users loginsecretaria">
+			<li class="nav-item "><a href="LogoutServlet">Salir</a></li>
 		</ul>
 	</div>
 	<div class="container">
@@ -33,18 +33,22 @@
 		<%@ include file="FormNuevoDepartamento.jsp"%>
 	
 
-			<div class="col-sm-12">
+			<div class="col-sm-4 loginsecretaria2">
 				<a href="FormNuevoDepartamentoServlet?menu=1">Rellenar Departamento </a>
 				
 				
 			</div>
-			<div class="col-sm-12">
+			<div class="col-sm-4 loginsecretaria2">
 				<a href="FormRespNuevoPlanServlet?menu=1">Rellenar Planes de Estudio </a>
 				
 			</div>
+			<div class="col-sm-12">
+				<h1></h1>
+			</div>
 	
 
-		<div class="page-header">
+		<div class="col-sm-12">
+		    <h3></h3>
 			<h3>DEPARTAMENTOS</h3>
 		</div>
 		<table class="table table-bordered">

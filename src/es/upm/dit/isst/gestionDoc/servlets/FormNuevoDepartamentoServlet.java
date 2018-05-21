@@ -101,7 +101,7 @@ public class FormNuevoDepartamentoServlet extends HttpServlet {
 
 							//Metodo para obtner un acronimo
 
-							String acronimo=prueba.getString(key).substring(0, 4);
+							String acronimo="-";
 					
 							departamento.setAcronimo(acronimo);
 						}
