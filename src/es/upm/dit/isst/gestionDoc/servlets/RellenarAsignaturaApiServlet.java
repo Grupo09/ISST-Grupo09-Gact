@@ -36,7 +36,6 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 
 		String planEstudiosCodigo = req.getParameter("planEstudios");
 		String departamentoCodigo = req.getParameter("departamento");
-		boolean javot = false;
 
 
 
@@ -44,7 +43,7 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 		PlanEstudios plan = PlanEstudiosDAOImplementation.getInstance().readPlanEstudios(planEstudiosCodigo);
 
 		Asignatura asignatura = new Asignatura();
-		AsignaturaDAOImplementation asigna = AsignaturaDAOImplementation.getInstance();
+		AsignaturaDAOImplementation asigna = null ;
 
 		System.out.println("/"+departamentoCodigo+"/"+planEstudiosCodigo);
 
@@ -67,7 +66,7 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 				resp.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = resp.getWriter();
 				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Javot lavate la boca');");
+				out.println("alert('No se han introducido los parametros adecuados');");
 				out.println("location='LoginResponsablePerfil.jsp';");
 				out.println("</script>");
 
@@ -265,7 +264,7 @@ public class RellenarAsignaturaApiServlet extends HttpServlet {
 
 					asignatura.setCoordinador(null);
 					asignatura.setPlanEstudios(plan);
-					asigna.createAsignatura(asignatura);
+					AsignaturaDAOImplementation.getInstance().createAsignatura(asignatura);
 
 
 

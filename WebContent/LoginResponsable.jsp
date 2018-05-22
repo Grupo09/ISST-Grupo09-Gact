@@ -67,6 +67,7 @@
 							<ul class="dropdown-menu li ">
 								<li class="li"><a href="LoginResponsableServlet?menu=9">Asignaturas</a></li>
 							</ul></li>
+							<li class="nav-item"><a class="nav-link" href="GenerarPDFServlet">GenerarPDF</a></li>
 					</ul>
 				</div>
 	
@@ -96,8 +97,10 @@
 						<c:when test="${menuResponsable == 6}">
 							<%@ include file="FormRespEditarAsignatura2.jsp"%>
 						</c:when>
-
-
+						
+						
+						
+	
 						<c:when test="${menuResponsable == 9}">
 							<%@ include file="RellenarAsignaturaApi.jsp"%>
 						</c:when>
